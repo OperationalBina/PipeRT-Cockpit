@@ -5,7 +5,7 @@ import SidebarNavigationView from "../components/sidebar-navigation-view";
 import RoutineExpandView from "../components/routine-expand-view";
 import Divider from "@mui/material/Divider";
 
-export default function MainPageView({ routines, logs, logs_summary, health }) {
+export default function MainPageView({routines, logs, logs_summary, health }) {
   return (
     <Grid container spacing={2}>
       <Grid item xs={2} xl={2}>
@@ -26,7 +26,7 @@ export default function MainPageView({ routines, logs, logs_summary, health }) {
           crashes={health.crashes}
           routines_number={health.routines_number}
           problems={health.problems}
-          stable_routines_number={health.stabe_routines_number}
+          stable_routines_number={health.stable_routines_number}
           health_score={health.health_score}
         />
       </Grid>

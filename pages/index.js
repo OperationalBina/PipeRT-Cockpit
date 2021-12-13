@@ -68,6 +68,10 @@ const routines = [
     routine1,
     routine2,
     routine,
+    routine,
+    routine1,
+    routine2,
+    routine,
   ];
 
 const logs_summary = {
@@ -80,7 +84,7 @@ const logs_summary = {
 const health = {
     "crashes": 66,
     "stable_routines_number": 5,
-    "health_score": 35,
+    "health_score": 60,
     "problems": 71,
     "routines_number": 15
 }
