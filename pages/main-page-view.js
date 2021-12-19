@@ -5,14 +5,14 @@ import SidebarNavigationView from "../components/sidebar-navigation-view";
 import RoutineExpandView from "../components/routine-expand-view";
 import Divider from "@mui/material/Divider";
 
-export default function MainPageView({routines, logs, logs_summary, health }) {
+export default function MainPageView({routines, logs, logs_summary, health, selected_routine, updateSelectedRoutine}) {
   return (
     <Grid container spacing={2}>
       <Grid item xs={2} xl={2}>
         <SidebarNavigationView></SidebarNavigationView>
       </Grid>
       <Grid item xs={7.8} xl={7.8}>
-        <RoutinesView routines={routines}></RoutinesView>
+        <RoutinesView routines={routines} selected_routine={selected_routine} updateSelectedRoutine={updateSelectedRoutine}></RoutinesView>
       </Grid>
       <Grid item xs={0.2}>
         <Divider

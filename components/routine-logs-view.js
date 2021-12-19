@@ -66,6 +66,7 @@ export default function RoutineLogsView({ logs }) {
         rowsPerPageOptions={[5]}
         onCellClick={handleClickOpen}
         {...logs}
+        getRowId={(row) => row._id}
         getRowClassName={(params) => `${params.getValue(params.id, "level")}`}
       />
 

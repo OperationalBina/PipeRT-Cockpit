@@ -1,94 +1,84 @@
 import MainPageView from "./main-page-view";
+import * as React from "react";
+import { ROUTINE_LEVELS_ENUM } from "../constants"
+class Home extends React.Component {
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      routines: [],
+      logs: [],
+      logs_summary: {
+        exceptions: 0,
+        warnings: 0,
+        info: 0,
+        avg_fps: 0
+      },
+      health: {
+        crashes: 0,
+        stable_routines_number: 0,
+        health_score: 0,
+        problems: 0,
+        routines_number: 0
+      },
+      selected_routine: null
+    }
 
-const routine = {
-    error_level: 0,
-    name: "Routine Name",
-  };
-  
-const routine1 = {
-    error_level: 1,
-    name: "Routine Name",
-  };
-  
-const routine2 = {
-    error_level: 2,
-    name: "Routine Name",
-  };
-  
-const logs = [
-    {
-      id: 0,
-      level: "Exception",
-      data: "I really love using pipeRT, I really love using pipeRT, I really love using pipeRT, I really love using pipeRT, I really love using pipeRT",
-    },
-    {
-      id: 1,
-      level: "Exception",
-      data: "I really love using pipeRT",
-    },
-    {
-      id: 2,
-      level: "Exception",
-      data: "I really love using pipeRT",
-    },
-    {
-      id: 3,
-      level: "Warning",
-      data: "I really love using pipeRT",
-    },
-    {
-      id: 4,
-      level: "Info",
-      data: "I really love using pipeRT",
-    },
-    {
-      id: 5,
-      level: "Exception",
-      data: 'Handled at stack lvl 0 \n \
-      File "exc.py", line 17, in <module> \n \
-        stack_lvl_1() \n \
-      File "exc.py", line 13, in stack_lvl_1 \n \
-        stack_lvl_2() \n \
-      File "exc.py", line 9, in stack_lvl_2 \n \
-        stack_lvl_3() \n \
-      File "exc.py", line 5, in stack_lvl_3 \n\
-        raise Exception("a1", "b2", "c3")',
-    },
-  ];
-  
-const routines = [
-    routine,
-    routine1,
-    routine2,
-    routine,
-    routine1,
-    routine2,
-    routine,
-    routine1,
-    routine2,
-    routine,
-    routine,
-    routine1,
-    routine2,
-    routine,
-  ];
+    this.fetchData = this.fetchData.bind(this);
+    this.updateSelectedRoutine = this.updateSelectedRoutine.bind(this);
+  }
 
-const logs_summary = {
-    "exceptions": 20,
-    "warnings": 15,
-    "info": 420,
-    "avg_fps": 40
+  updateSelectedRoutine(routine_name) {
+    this.setState({
+      selected_routine: routine_name
+    })
+    this.fetchData();
+  }
+
+  fetchData() {
+    fetch('/api/routines')
+      .then(res => res.json())
+      .then(data => {
+        let crashed_routine_number = data.filter(routine => routine.error_level == ROUTINE_LEVELS_ENUM.CRASH).length
+
+        const updated_health = {
+          crashes: crashed_routine_number,
+          stable_routines_number: data.filter(routine => routine.error_level == ROUTINE_LEVELS_ENUM.STABLE).length,
+          health_score: Math.floor(((data.length - crashed_routine_number) / data.length) * 100),
+          problems: data.filter(routine => routine.error_level == ROUTINE_LEVELS_ENUM.PROBLEM).length,
+          routines_number: data.length
+        }
+        
+        this.setState({ routines: data, health: updated_health })
+      })
+
+    if (this.state.selected_routine !== null) {
+      fetch(`/api/routine_logs/${this.state.selected_routine}`)
+        .then(res => res.json())
+        .then(data => {
+          this.setState(data)
+        })
+    }
+  }
+
+  componentDidMount() {
+    this.interval = setInterval(this.fetchData, 3000)
+    this.fetchData();
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval)
+  }
+
+  render() {
+    return <MainPageView
+      routines={this.state.routines}
+      logs={this.state.logs}
+      logs_summary={this.state.logs_summary}
+      health={this.state.health}
+      selected_routine={this.state.selected_routine}
+      updateSelectedRoutine={this.updateSelectedRoutine} />
+  }
 }
 
-const health = {
-    "crashes": 66,
-    "stable_routines_number": 5,
-    "health_score": 60,
-    "problems": 71,
-    "routines_number": 15
-}
-
-export default function Home() {
-    return <MainPageView routines={routines} logs={logs} logs_summary={logs_summary} health={health}/>
-}
+export default Home
