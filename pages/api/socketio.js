@@ -8,7 +8,7 @@ const ioHandler = (req, res) => {
 
     io.on("connection", (socket) => {
       socket.on("log", (msg) => {
-        // Do something with log msg
+        socket.broadcast.emit("get_log", msg);
       });
     });
 
