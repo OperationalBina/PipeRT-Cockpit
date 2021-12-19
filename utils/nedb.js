@@ -108,4 +108,17 @@ function find(db, ...opt) {
   })
 }
 
-export { connectToDatabase, insert, find }
+function count(db, ...opt) {
+  return new Promise(function (resolve, reject) {
+    db.count(...opt, function (err, doc) {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(doc)
+      }
+    })
+  })
+}
+
+
+export { connectToDatabase, insert, find, count }

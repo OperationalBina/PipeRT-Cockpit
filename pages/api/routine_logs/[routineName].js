@@ -10,12 +10,6 @@ export default async function handler(req, res) {
     let plogs = await find(db.plogs, {Source: routineName})
 
     let result = {
-        logs_summary: {
-        "exceptions": exceptions.length,
-        "warnings": warnings.length,
-        "info": infos.length,
-        "avg_fps": 1
-      },
       logs: [].concat(exceptions, warnings, infos, plogs)
     }
 
