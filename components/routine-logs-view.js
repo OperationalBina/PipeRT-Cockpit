@@ -19,7 +19,7 @@ const columns = [
   },
 ];
 
-export default function RoutineLogsView({ logs }) {
+export default function RoutineLogsView({ logs, logsPerPage }) {
   const [open, setOpen] = React.useState(false);
   const [level, setLevel] = React.useState("");
   const [data, setData] = React.useState("");
@@ -62,8 +62,8 @@ export default function RoutineLogsView({ logs }) {
         autoHeight={true}
         rows={logs}
         columns={columns}
-        pageSize={5}
-        rowsPerPageOptions={[5]}
+        pageSize={logsPerPage}
+        rowsPerPageOptions={[logsPerPage]}
         onCellClick={handleClickOpen}
         {...logs}
         getRowClassName={(params) => `${params.getValue(params.id, "level")}`}

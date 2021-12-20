@@ -13,7 +13,7 @@ export default function RoutineExpandView({
   return (
     <Grid container spacing={2}>
       <Grid item xs={48 / 5 - 0.2} xl={48 / 5 - 0.2}>
-        <RoutineLogsView logs={logs} />
+        <RoutineLogsView logs={logs} logsPerPage={5} />
       </Grid>
       <Grid item xs={0.2} xl={0.2} paddingTop="5%" paddingBottom="2%">
         <Divider
