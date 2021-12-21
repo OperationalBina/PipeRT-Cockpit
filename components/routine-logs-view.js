@@ -1,11 +1,13 @@
 import { DataGrid } from "@mui/x-data-grid";
-import * as React from "react";
+import { useEffect, useState } from "react";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import styles from "../styles/utils.module.css";
 import { Box } from "@mui/system";
+import { useRecoilValue } from 'recoil';
+import { selectedRoutineState } from "../utils/shared_atoms";
 
 const getBackgroundColor = (color, mode) =>
   mode === "dark" ? darken(color, 0.6) : lighten(color, 0.6);
@@ -19,10 +21,12 @@ const columns = [
   },
 ];
 
-export default function RoutineLogsView({ logs, logsPerPage }) {
-  const [open, setOpen] = React.useState(false);
-  const [level, setLevel] = React.useState("");
-  const [data, setData] = React.useState("");
+export default function RoutineLogsView( {logsPerPage} ) {
+  const selectedRoutine = useRecoilValue(selectedRoutineState);
+  const [open, setOpen] = useState(false);
+  const [level, setLevel] = useState("");
+  const [data, setData] = useState("");
+  const [logs, setLogs] = useState([]);
 
   const handleClickOpen = (cell) => {
     setOpen(true);
@@ -33,6 +37,16 @@ export default function RoutineLogsView({ logs, logsPerPage }) {
   const handleClose = () => {
     setOpen(false);
   };
+
+  useEffect(() => {
+    if (selectedRoutine !== null) {
+      fetch(`http://localhost:3000/api/routine_logs/${selectedRoutine}`)
+        .then(res => res.json())
+        .then(data => {
+          setLogs(data.logs)
+        })
+    }
+  }, [selectedRoutine]);
 
   return (
     <Box
@@ -66,6 +80,7 @@ export default function RoutineLogsView({ logs, logsPerPage }) {
         rowsPerPageOptions={[logsPerPage]}
         onCellClick={handleClickOpen}
         {...logs}
+        getRowId={(row) => row._id}
         getRowClassName={(params) => `${params.getValue(params.id, "level")}`}
       />
 

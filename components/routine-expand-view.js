@@ -3,17 +3,12 @@ import RoutineLogsSummeryView from "./routine-logs-summery-view";
 import RoutineLogsView from "./routine-logs-view";
 import Divider from "@mui/material/Divider";
 
-export default function RoutineExpandView({
-  logs,
-  exceptions,
-  warnings,
-  info,
-  avg_fps,
-}) {
+export default function RoutineExpandView() {
+
   return (
     <Grid container spacing={2}>
       <Grid item xs={48 / 5 - 0.2} xl={48 / 5 - 0.2}>
-        <RoutineLogsView logs={logs} logsPerPage={5} />
+        <RoutineLogsView logsPerPage=5 />
       </Grid>
       <Grid item xs={0.2} xl={0.2} paddingTop="5%" paddingBottom="2%">
         <Divider
@@ -23,12 +18,7 @@ export default function RoutineExpandView({
         />
       </Grid>
       <Grid item xs={12 / 5}>
-        <RoutineLogsSummeryView
-          exceptions={exceptions}
-          warnings={warnings}
-          info={info}
-          avg_fps={avg_fps}
-        />
+        <RoutineLogsSummeryView/>
       </Grid>
     </Grid>
   );

@@ -1,11 +1,12 @@
 import styles from "../styles/utils.module.css";
 import Circle from "@mui/icons-material/Circle";
 import Grid from "@mui/material/Grid";
+import { ROUTINE_LEVELS_ENUM } from "../constants";
 
 const color_by_error_level = {
-  0: "green",
-  1: "yellow",
-  2: "red",
+  [ROUTINE_LEVELS_ENUM.STABLE]: "green",
+  [ROUTINE_LEVELS_ENUM.PROBLEM]: "yellow",
+  [ROUTINE_LEVELS_ENUM.CRASH]: "red",
 };
 
 export default function RoutineView({ routine }) {
