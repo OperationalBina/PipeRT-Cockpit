@@ -8,6 +8,9 @@ export default async function handler(req, res) {
     let warnings = await count(db.warnings, { Source: routineName })
     let infos = await count(db.infos, { Source: routineName })
 
+    let logs = await Promise.all([exceptions, warnings, infos]);
+    [exceptions, warnings, infos] = logs
+
     let result = {
         exceptions: exceptions,
         warnings: warnings,

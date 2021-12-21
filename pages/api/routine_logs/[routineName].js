@@ -4,13 +4,15 @@ export default async function handler(req, res) {
     const { routineName } = req.query
     const { db } = connectToDatabase()
 
-    let exceptions = await find(db.exceptions, {Source: routineName})
-    let warnings = await find(db.warnings, {Source: routineName})
-    let infos = await find(db.infos, {Source: routineName})
-    let plogs = await find(db.plogs, {Source: routineName})
+    let exceptions = find(db.exceptions, {Source: routineName})
+    let warnings = find(db.warnings, {Source: routineName})
+    let infos = find(db.infos, {Source: routineName})
+    let plogs = find(db.plogs, {Source: routineName})
+
+    let logs = await Promise.all([exceptions, warnings, infos, plogs]);
 
     let result = {
-      logs: [].concat(exceptions, warnings, infos, plogs)
+      logs: [].concat.apply([], logs)
     }
 
     res.json(result)
