@@ -1,7 +1,7 @@
 import Grid from "@mui/material/Grid";
 import RoutineLogsView from "./routine-logs-view";
 import ImageView from "./image-view";
-import RoutinePageAppBar from "./routine-page-app-bar";
+import RoutineAppBar from "./routine-app-bar";
 import { selectedRoutineState } from "../utils/shared_atoms";
 import { useRecoilState } from 'recoil';
 
@@ -39,7 +39,7 @@ export default function RoutinePageView({
 
   return (
     <>
-      <RoutinePageAppBar routineName={routineName} />
+      <RoutineAppBar routineName={routineName} />
       <Grid container spacing={3} paddingLeft={1} paddingRight={1}>
         <Grid item xs={inputOutputXS}>
           <ImageView imageName={"Input"} imageBase64={input} />

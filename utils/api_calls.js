@@ -11,7 +11,6 @@ export async function getRoutines() {
 
 
 export async function getLogsSummary(routineName) {
-
     let response = await fetch(`http://localhost:3000/api/routine_logs/${routineName}/summary`);
 
     if (response.status >= 400 && response.status < 600) {

@@ -4,14 +4,9 @@ import { RecoilRoot } from 'recoil';
 
 
 export async function getStaticProps({ params }) {
-
-
   return {
     props: {
       routineName: params.routine_name,
-      // input,
-      // output,
-      // extraImages,
     }
   }
 }
@@ -28,7 +23,6 @@ export async function getStaticPaths() {
 
 
 export default function RoutineView( {routineName} ) {
-
   return (
     <RecoilRoot><RoutinePageView routineName={routineName} /></RecoilRoot>
   )
