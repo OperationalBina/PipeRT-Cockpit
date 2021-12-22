@@ -2,6 +2,8 @@ import Grid from "@mui/material/Grid";
 import RoutineLogsView from "./routine-logs-view";
 import ImageView from "./image-view";
 import RoutinePageAppBar from "./routine-page-app-bar";
+import { selectedRoutineState } from "../utils/shared_atoms";
+import { useRecoilState } from 'recoil';
 
 function GetExtraImages(extraImages) {
   return extraImages.map(function (extraImage, index) {
@@ -18,11 +20,13 @@ function GetExtraImages(extraImages) {
 
 export default function RoutinePageView({
   routineName,
-  logs,
   input,
   output,
   extraImages,
 }) {
+  const [selectedRoutine, setSelectedRoutine] = useRecoilState(selectedRoutineState);
+  setSelectedRoutine(routineName)
+
   const existingExtraImages = extraImages != null;
 
   let inputOutputXS = 6;
@@ -45,7 +49,7 @@ export default function RoutinePageView({
           <ImageView imageName={"Output"} imageBase64={output} />
         </Grid>
         <Grid item xs={12}>
-          <RoutineLogsView logs={logs} logsPerPage={15} />
+          <RoutineLogsView logsPerPage={15} />
         </Grid>
       </Grid>
     </>
