@@ -4,6 +4,7 @@ import ImageView from "./image-view";
 import RoutineAppBar from "./routine-app-bar";
 import { selectedRoutineState } from "../utils/shared_atoms";
 import { useRecoilState } from 'recoil';
+import { useEffect } from "react";
 
 function GetExtraImages(extraImages) {
   return extraImages.map(function (extraImage, index) {
@@ -23,11 +24,17 @@ export default function RoutinePageView({
   input,
   output,
   extraImages,
-}) {
+}) 
+{
+
   const [selectedRoutine, setSelectedRoutine] = useRecoilState(selectedRoutineState);
-  setSelectedRoutine(routineName)
 
   const existingExtraImages = extraImages != null;
+
+  useEffect(() => {
+    setSelectedRoutine(routineName)
+  }, []);
+
 
   let inputOutputXS = 6;
   let extraImagesView = <></>;

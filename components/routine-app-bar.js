@@ -26,7 +26,7 @@ const ligthTheme = createTheme({
   },
 });
 
-export default function RoutinePageAppBar({ routineName }) {
+export default function RoutineAppBar({ routineName }) {
   return (
     <Grid item xs={12}>
       <ThemeProvider theme={darkTheme}>
