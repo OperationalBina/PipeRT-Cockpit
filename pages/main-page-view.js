@@ -11,9 +11,11 @@ export default function MainPageView() {
 
   const [routines, setRoutines] = useState([])
 
-  useEffect(async () => {
-    let routes = await getRoutines()
-    setRoutines(routes)
+  useEffect(() => {
+    (async function updateRoutines() {
+      let routines = await getRoutines()
+      setRoutines(routines)
+    })();
   }, []);
       
   return (
