@@ -4,6 +4,8 @@ import ImageView from "./image-view";
 import RoutineAppBar from "./routine-app-bar";
 import { selectedRoutineState } from "../utils/shared_atoms";
 import { useRecoilState } from 'recoil';
+import { useEffect, useState } from "react";
+import io from 'socket.io-client'
 
 function GetExtraImages(extraImages) {
   return extraImages.map(function (extraImage, index) {
@@ -20,14 +22,36 @@ function GetExtraImages(extraImages) {
 
 export default function RoutinePageView({
   routineName,
-  input,
-  output,
-  extraImages,
 }) {
   const [selectedRoutine, setSelectedRoutine] = useRecoilState(selectedRoutineState);
+
+  const [input, setInput] = useState("");
+  const [output, setOutput] = useState("");
+  const [extraImages, setExtraImages] = useState([]);
+
+
   setSelectedRoutine(routineName)
 
-  const existingExtraImages = extraImages != null;
+  useEffect(() => {
+    fetch(`/api/routine_data/${selectedRoutine}`).finally(() => {
+      const socket = io()
+
+      socket.on('input', input => {
+        setInput(input)
+      })
+
+      socket.on('output', output => {
+        setOutput(output)
+      })
+
+      socket.on('extraImages', extraImages => {
+        setExtraImages(extraImages)
+      })
+
+    })
+  }, [])
+
+  const existingExtraImages = extraImages != null && extraImages.length > 0;
 
   let inputOutputXS = 6;
   let extraImagesView = <></>;
