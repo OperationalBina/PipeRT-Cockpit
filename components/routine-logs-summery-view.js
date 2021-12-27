@@ -3,8 +3,9 @@ import { useEffect, useState } from "react";
 import KeyValueView from "./key-value-view";
 import { useRecoilValue } from 'recoil';
 import { selectedRoutineState } from "../utils/shared_atoms";
+import { getLogsSummary } from "../utils/api_calls"
 
-const initialLogsCounter = {
+const initiallogsSummary = {
   exceptions: 0,
   warnings: 0,
   info: 0,
@@ -13,35 +14,28 @@ const initialLogsCounter = {
 
 export default function RoutineLogsSummeryView() {
   const selectedRoutine = useRecoilValue(selectedRoutineState);
-  const [logsCounter, setLogsCounter] = useState(initialLogsCounter)
+  const [logsSummary, setLogsSummary] = useState(initiallogsSummary)
 
   useEffect(() => {
     if (selectedRoutine !== null) {
-      fetch(`http://localhost:3000/api/routine_logs/${selectedRoutine}/summary`)
-        .then(res => res.json())
-        .then(data => {
-          setLogsCounter(data)
-        })
-        .catch(error => {
-          console.log(`Unable to count logs for routine '${selectedRoutine}' - ${error}`)
-          setLogsCounter({
-            exceptions: -1,
-            warnings: -1,
-            info: -1,
-            avg_fps: -1
-          })
-        })
+        async function updateLogsSummary() {
+            setLogsSummary( await getLogsSummary(selectedRoutine))
+        }
+        updateLogsSummary();
+        const updateLogsSummaryInterval = setInterval(() => {updateLogsSummary();}, 5000);
+
+        return () => {clearInterval(updateLogsSummaryInterval);};
     }
     else
-      setLogsCounter(initialLogsCounter)
+      setLogsSummary(initiallogsSummary)
 
   }, [selectedRoutine]);
 
 
   return <Grid container spacing={3}>
-    <KeyValueView field="Exceptions" value={logsCounter.exceptions} />
-    <KeyValueView field="Warnings" value={logsCounter.warnings} />
-    <KeyValueView field="Info" value={logsCounter.info} />
-    <KeyValueView field="AVG FPS" value={logsCounter.avg_fps} />
+    <KeyValueView field="Exceptions" value={logsSummary.exceptions} />
+    <KeyValueView field="Warnings" value={logsSummary.warnings} />
+    <KeyValueView field="Info" value={logsSummary.info} />
+    <KeyValueView field="AVG FPS" value={logsSummary.avg_fps} />
   </Grid>
 }

@@ -6,18 +6,12 @@ import SidebarNavigationView from "../components/sidebar-navigation-view";
 import RoutineExpandView from "../components/routine-expand-view";
 import Divider from "@mui/material/Divider";
 import { getRoutines } from "../utils/api_calls"
+import { useUpdatingState } from "../utils/interval_hook"
 
 export default function MainPageView() {
 
-  const [routines, setRoutines] = useState([])
-
-  useEffect(() => {
-    (async function updateRoutines() {
-      let routines = await getRoutines()
-      setRoutines(routines)
-    })();
-  }, []);
-      
+  const routines = useUpdatingState([], getRoutines, 5000)
+  
   return (
     <Grid container spacing={2}>
       <Grid item xs={2} xl={2}>

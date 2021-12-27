@@ -4,11 +4,13 @@ export function useUpdatingState(stateDefaultValue, stateFetcher, updateTime) {
   const [myState, setState] = useState(stateDefaultValue)
 
   useEffect(() => {
-    const updateStateInterval = setInterval(() => {
-      (async function updateState() {
+    async function updateState() {
         let stateValue = await stateFetcher()
         setState(stateValue)
-      })();
+    }
+    updateState()
+    const updateStateInterval = setInterval(() => {
+        updateState()
     }, updateTime);
 
     return () => {
