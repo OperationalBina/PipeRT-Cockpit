@@ -5,19 +5,17 @@ import SystemStatusView from "../components/system-status-view";
 import SidebarNavigationView from "../components/sidebar-navigation-view";
 import RoutineExpandView from "../components/routine-expand-view";
 import Divider from "@mui/material/Divider";
+import { getRoutines } from "../utils/api_calls"
 
 export default function MainPageView() {
 
   const [routines, setRoutines] = useState([])
 
   useEffect(() => {
-    console.log("fetching")
-    fetch('http://localhost:3000/api/routines')
-      .then(res => res.json())
-      .then(data => {
-        setRoutines(data)
-        console.log(routines)
-      });
+    (async function updateRoutines() {
+      let routines = await getRoutines()
+      setRoutines(routines)
+    })();
   }, []);
       
   return (

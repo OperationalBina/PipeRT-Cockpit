@@ -21,7 +21,7 @@ const columns = [
   },
 ];
 
-export default function RoutineLogsView() {
+export default function RoutineLogsView( {logsPerPage} ) {
   const selectedRoutine = useRecoilValue(selectedRoutineState);
   const [open, setOpen] = useState(false);
   const [level, setLevel] = useState("");
@@ -76,8 +76,8 @@ export default function RoutineLogsView() {
         autoHeight={true}
         rows={logs}
         columns={columns}
-        pageSize={5}
-        rowsPerPageOptions={[5]}
+        pageSize={logsPerPage}
+        rowsPerPageOptions={[logsPerPage]}
         onCellClick={handleClickOpen}
         {...logs}
         getRowId={(row) => row._id}
