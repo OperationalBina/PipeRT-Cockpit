@@ -4,9 +4,9 @@ export default async function handler(req, res) {
     const { routineName } = req.query
     const { db } = connectToDatabase()
 
-    let exceptions = await count(db.exceptions, { Source: routineName })
-    let warnings = await count(db.warnings, { Source: routineName })
-    let infos = await count(db.infos, { Source: routineName })
+    let exceptions = await count(db.exceptions, { source: routineName })
+    let warnings = await count(db.warnings, { source: routineName })
+    let infos = await count(db.infos, { source: routineName })
 
     let logs = await Promise.all([exceptions, warnings, infos]);
     [exceptions, warnings, infos] = logs
