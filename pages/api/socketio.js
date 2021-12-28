@@ -13,11 +13,12 @@ const ioHandler = (req, res) => {
         socket.broadcast.emit("get_log", msg);
         msg = JSON.parse(msg);
         msg["source"] = msg["source"].split(".").at(-1);
-
+        console.log(msg)
         insert(db[msg["level"].toLowerCase() + "s"], msg);
       });
 
       socket.on("pipe_creation", async (msg) => {
+        console.log("boom")
         msg = JSON.parse(JSON.parse(msg)["message"].replaceAll("'", '"'))[
           "Pipe structure"
         ];
