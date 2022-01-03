@@ -6,9 +6,9 @@ import { ROUTINE_LEVELS_ENUM } from "../constants"
 
 export default function SystemStatusView({routines}) {
   let routinesCount = routines.length,
-      stableRoutineCount = routines.filter(routine => routine.error_level == ROUTINE_LEVELS_ENUM.STABLE).length,
-      problemRoutineCount = routines.filter(routine => routine.error_level == ROUTINE_LEVELS_ENUM.PROBLEM).length,
-      crashedRoutinesCount = routines.filter(routine => routine.error_level == ROUTINE_LEVELS_ENUM.CRASH).length,
+      stableRoutineCount = routines.filter(routine => routine.errorLevel == ROUTINE_LEVELS_ENUM.STABLE).length,
+      problemRoutineCount = routines.filter(routine => routine.errorLevel == ROUTINE_LEVELS_ENUM.PROBLEM).length,
+      crashedRoutinesCount = routines.filter(routine => routine.errorLevel == ROUTINE_LEVELS_ENUM.CRASH).length,
       healthScore=Math.floor(((routinesCount - crashedRoutinesCount) / routinesCount) * 100)
 
   return (
@@ -25,7 +25,7 @@ export default function SystemStatusView({routines}) {
         <Divider variant="middle" style={{ width: "80%" }} />
       </Grid>
       
-      <HealthScoreView health_score={healthScore} />
+      <HealthScoreView healthScore={healthScore} />
     </Grid>
   );
 }

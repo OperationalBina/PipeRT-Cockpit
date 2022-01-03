@@ -8,7 +8,7 @@ const initialLogsCounter = {
   exceptions: 0,
   warnings: 0,
   info: 0,
-  avg_fps: 0
+  avgFps: 0
 }
 
 export default function RoutineLogsSummeryView() {
@@ -28,7 +28,7 @@ export default function RoutineLogsSummeryView() {
             exceptions: -1,
             warnings: -1,
             info: -1,
-            avg_fps: -1
+            avgFps: -1
           })
         })
     }
@@ -42,6 +42,6 @@ export default function RoutineLogsSummeryView() {
     <KeyValueView field="Exceptions" value={logsCounter.exceptions} />
     <KeyValueView field="Warnings" value={logsCounter.warnings} />
     <KeyValueView field="Info" value={logsCounter.info} />
-    <KeyValueView field="AVG FPS" value={logsCounter.avg_fps} />
+    <KeyValueView field="AVG FPS" value={logsCounter.avgFps} />
   </Grid>
 }

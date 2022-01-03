@@ -19,7 +19,7 @@ export async function getLogsSummary(routineName) {
             exceptions: -1,
             warnings: -1,
             info: -1,
-            avg_fps: -1
+            avgfps: -1
           }
     } else
         return response.json()

@@ -6,14 +6,14 @@ import { RecoilRoot } from 'recoil';
 export async function getStaticProps({ params }) {
   return {
     props: {
-      routineName: params.routine_name,
+      routineName: params.routineName,
     }
   }
 }
 
 export async function getStaticPaths() {
   let paths = await getRoutines()
-  paths = paths.map(routine => ({ params: { routine_name: routine.name } }))
+  paths = paths.map(routine => ({ params: { routineName: routine.name } }))
 
   return {
     paths,
