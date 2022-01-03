@@ -1024,3 +1024,206 @@
 {"time":"03-01-22 10:16:08.721","source":"src","level":"INFO","message":"Current frame: 28","_id":"zyQgLiGCshmCh0Z7"}
 {"time":"03-01-22 10:16:14.024","source":"Black White routine","level":"INFO","message":"Get frame number of: 68","_id":"zySvuwAUMebLbHRe"}
 {"time":"03-01-22 10:16:05.368","source":"Black White routine","level":"INFO","message":"Get frame number of: 1","_id":"zzzUSXuxBoayIGEq"}
+{"time":"03-01-22 10:38:52.186","source":"src","level":"INFO","message":"Current frame: 1","_id":"e3vHFNnqKUXrpxHT"}
+{"time":"03-01-22 10:38:52.241","source":"Black White routine","level":"INFO","message":"Get frame number of: 1","_id":"SnbnsUOnDEUh2ude"}
+{"time":"03-01-22 10:38:52.244","source":"Black White routine","level":"INFO","message":"Test log","_id":"Ue9DaxHMhQrd43hD"}
+{"time":"03-01-22 10:38:52.283","source":"src","level":"INFO","message":"Current frame: 2","_id":"PrgpaaIkGEN65y4H"}
+{"time":"03-01-22 10:38:52.363","source":"src","level":"INFO","message":"Current frame: 3","_id":"RSukUZPVkg0CGyPd"}
+{"time":"03-01-22 10:38:52.376","source":"Black White routine","level":"INFO","message":"Get frame number of: 3","_id":"KooJAOltQQK1pzOB"}
+{"time":"03-01-22 10:38:52.381","source":"Black White routine","level":"INFO","message":"Test log","_id":"BWHDvnrg5Rynd1Oj"}
+{"time":"03-01-22 10:38:52.482","source":"src","level":"INFO","message":"Current frame: 4","_id":"CarQOjKeoPHQttxw"}
+{"time":"03-01-22 10:38:52.522","source":"Black White routine","level":"INFO","message":"Get frame number of: 4","_id":"TllWQzoT7G3N5KQ1"}
+{"time":"03-01-22 10:38:52.537","source":"Black White routine","level":"INFO","message":"Test log","_id":"by3DuX8oKvl91zGw"}
+{"time":"03-01-22 10:38:52.602","source":"src","level":"INFO","message":"Current frame: 5","_id":"0qqg40d8r3Hdgzu8"}
+{"time":"03-01-22 10:38:52.680","source":"Black White routine","level":"INFO","message":"Get frame number of: 5","_id":"oDjJoVRjw6fKNDWQ"}
+{"time":"03-01-22 10:38:52.704","source":"src","level":"INFO","message":"Current frame: 6","_id":"va8ZSflLMCNXG8eb"}
+{"time":"03-01-22 10:38:52.682","source":"Black White routine","level":"INFO","message":"Test log","_id":"tSVLuszSbAzQG9dj"}
+{"time":"03-01-22 10:38:52.815","source":"src","level":"INFO","message":"Current frame: 7","_id":"OculjOw8qrfrx1Gk"}
+{"time":"03-01-22 10:38:52.908","source":"src","level":"INFO","message":"Current frame: 8","_id":"tnECT4pejjEwuiKt"}
+{"time":"03-01-22 10:38:52.888","source":"Black White routine","level":"INFO","message":"Get frame number of: 7","_id":"P9Qj3CaXcBJcoIe5"}
+{"time":"03-01-22 10:38:52.903","source":"Black White routine","level":"INFO","message":"Test log","_id":"qyHbiUzmJDgGBu0n"}
+{"time":"03-01-22 10:38:52.989","source":"src","level":"INFO","message":"Current frame: 9","_id":"poCfCirBjwnTCeUn"}
+{"time":"03-01-22 10:38:53.028","source":"Black White routine","level":"INFO","message":"Get frame number of: 9","_id":"d8MyqRfAS4dGFghg"}
+{"time":"03-01-22 10:38:53.059","source":"Black White routine","level":"INFO","message":"Test log","_id":"yYCM4I4r3yLx28pn"}
+{"time":"03-01-22 10:38:53.109","source":"src","level":"INFO","message":"Current frame: 10","_id":"GRjKV3ft6TvBjwzz"}
+{"time":"03-01-22 10:38:53.191","source":"Black White routine","level":"INFO","message":"Get frame number of: 10","_id":"S83zF0dS3mbR3vhY"}
+{"time":"03-01-22 10:38:53.242","source":"src","level":"INFO","message":"Current frame: 11","_id":"mZBQScGkKYlcVVd3"}
+{"time":"03-01-22 10:38:53.207","source":"Black White routine","level":"INFO","message":"Test log","_id":"ZErnu8wyynknUaPo"}
+{"time":"03-01-22 10:38:53.337","source":"src","level":"INFO","message":"Current frame: 12","_id":"linZMrgL7iCoHQlb"}
+{"time":"03-01-22 10:38:53.394","source":"Black White routine","level":"INFO","message":"Get frame number of: 12","_id":"YJJPWTgJohuKyeAs"}
+{"time":"03-01-22 10:38:53.408","source":"Black White routine","level":"INFO","message":"Test log","_id":"wgivDPcM0GDtTqdb"}
+{"time":"03-01-22 10:38:53.451","source":"src","level":"INFO","message":"Current frame: 13","_id":"9tw4qH3jD2Zud0Dg"}
+{"time":"03-01-22 10:38:53.542","source":"Black White routine","level":"INFO","message":"Get frame number of: 13","_id":"oNSqRCcuPn0qSrwq"}
+{"time":"03-01-22 10:38:53.616","source":"src","level":"INFO","message":"Current frame: 14","_id":"4qa7KAp2qAZc4vFX"}
+{"time":"03-01-22 10:38:53.547","source":"Black White routine","level":"INFO","message":"Test log","_id":"3HeQYOItmm0l5uzB"}
+{"time":"03-01-22 10:38:53.693","source":"src","level":"INFO","message":"Current frame: 15","_id":"SidpcUpLjWiVQwv1"}
+{"time":"03-01-22 10:38:53.709","source":"Black White routine","level":"INFO","message":"Get frame number of: 15","_id":"GZs0qyEYIDQdjQ0d"}
+{"time":"03-01-22 10:38:53.716","source":"Black White routine","level":"INFO","message":"Test log","_id":"9Z3oR2ex9mM2lK7V"}
+{"time":"03-01-22 10:38:53.831","source":"src","level":"INFO","message":"Current frame: 16","_id":"J72JS4xXJ2WCga4z"}
+{"time":"03-01-22 10:38:53.874","source":"Black White routine","level":"INFO","message":"Get frame number of: 16","_id":"f7KqmEHinaDfG5ME"}
+{"time":"03-01-22 10:38:53.945","source":"src","level":"INFO","message":"Current frame: 17","_id":"mELA9kCasWUCRXeL"}
+{"time":"03-01-22 10:38:53.885","source":"Black White routine","level":"INFO","message":"Test log","_id":"VKzx6J8XU7gj6DpS"}
+{"time":"03-01-22 10:38:54.053","source":"src","level":"INFO","message":"Current frame: 18","_id":"xllLqfE484CKWRaU"}
+{"time":"03-01-22 10:38:54.050","source":"Black White routine","level":"INFO","message":"Get frame number of: 17","_id":"FBRJpOt70kkqzGux"}
+{"time":"03-01-22 10:38:54.057","source":"Black White routine","level":"INFO","message":"Test log","_id":"cLYGQ5vj5Hui6lpW"}
+{"time":"03-01-22 10:38:54.167","source":"src","level":"INFO","message":"Current frame: 19","_id":"HVybK8OPZUVQ51Ln"}
+{"time":"03-01-22 10:38:54.196","source":"Black White routine","level":"INFO","message":"Get frame number of: 19","_id":"EmuAUywSzTjPU0Gb"}
+{"time":"03-01-22 10:38:54.196","source":"Black White routine","level":"INFO","message":"Test log","_id":"BwwlAbxf1YHUWqU8"}
+{"time":"03-01-22 10:38:54.304","source":"src","level":"INFO","message":"Current frame: 20","_id":"goVmfd1ZpZSdzqQD"}
+{"time":"03-01-22 10:38:54.363","source":"Black White routine","level":"INFO","message":"Get frame number of: 20","_id":"9QfjpUd4veoMOBAF"}
+{"time":"03-01-22 10:38:54.364","source":"Black White routine","level":"INFO","message":"Test log","_id":"viNAOSPNm6Y2IhFy"}
+{"time":"03-01-22 10:38:54.420","source":"src","level":"INFO","message":"Current frame: 21","_id":"nIayjueKETWIFqaO"}
+{"time":"03-01-22 10:38:54.548","source":"src","level":"INFO","message":"Current frame: 22","_id":"MiqbjpzZYJKt7HCr"}
+{"time":"03-01-22 10:38:54.506","source":"Black White routine","level":"INFO","message":"Get frame number of: 21","_id":"rTNmE7f9ZTjOzRBS"}
+{"time":"03-01-22 10:38:54.511","source":"Black White routine","level":"INFO","message":"Test log","_id":"FPRWkrMomIMzBzaJ"}
+{"time":"03-01-22 10:38:54.628","source":"Black White routine","level":"INFO","message":"Get frame number of: 22","_id":"rWXcB6qwGkR1ZSPV"}
+{"time":"03-01-22 10:38:54.636","source":"Black White routine","level":"INFO","message":"Test log","_id":"tajv4ekO5IkUiMat"}
+{"time":"03-01-22 10:38:54.655","source":"src","level":"INFO","message":"Current frame: 23","_id":"1TPuCWwKzPQuhvMq"}
+{"time":"03-01-22 10:38:54.750","source":"src","level":"INFO","message":"Current frame: 24","_id":"A2QK3tu9EuMAjVX0"}
+{"time":"03-01-22 10:38:54.800","source":"Black White routine","level":"INFO","message":"Get frame number of: 24","_id":"ivFy5ngb5SLQDdbY"}
+{"time":"03-01-22 10:38:54.830","source":"Black White routine","level":"INFO","message":"Test log","_id":"Pdc5sGJDcREjKqi9"}
+{"time":"03-01-22 10:38:54.932","source":"src","level":"INFO","message":"Current frame: 25","_id":"g3soNCfmbY7b5oci"}
+{"time":"03-01-22 10:38:55.005","source":"Black White routine","level":"INFO","message":"Get frame number of: 25","_id":"LcE4kBesoPS2uY3G"}
+{"time":"03-01-22 10:38:55.042","source":"src","level":"INFO","message":"Current frame: 26","_id":"c92GMgixEMNLhYSg"}
+{"time":"03-01-22 10:38:55.017","source":"Black White routine","level":"INFO","message":"Test log","_id":"GjJb0PtAYF8g53M2"}
+{"time":"03-01-22 10:38:55.143","source":"src","level":"INFO","message":"Current frame: 27","_id":"jHRc1AOs93yXSrK9"}
+{"time":"03-01-22 10:38:55.161","source":"Black White routine","level":"INFO","message":"Get frame number of: 26","_id":"wkUomDXxmaknzvgA"}
+{"time":"03-01-22 10:38:55.179","source":"Black White routine","level":"INFO","message":"Test log","_id":"89oylzKssMGZAJZ5"}
+{"time":"03-01-22 10:38:55.285","source":"src","level":"INFO","message":"Current frame: 28","_id":"INsanPJQSGGZxjyf"}
+{"time":"03-01-22 10:38:55.325","source":"Black White routine","level":"INFO","message":"Get frame number of: 28","_id":"1mcM8nGWs37vWVcy"}
+{"time":"03-01-22 10:38:55.326","source":"Black White routine","level":"INFO","message":"Test log","_id":"hFapb5YzGjnOpEkS"}
+{"time":"03-01-22 10:38:55.434","source":"src","level":"INFO","message":"Current frame: 29","_id":"Aerlyc6UrMLeaORZ"}
+{"time":"03-01-22 10:38:55.480","source":"Black White routine","level":"INFO","message":"Get frame number of: 29","_id":"UEgKsf24WV3qswkJ"}
+{"time":"03-01-22 10:38:55.518","source":"Black White routine","level":"INFO","message":"Test log","_id":"uAKS6n7lAi4gXae3"}
+{"time":"03-01-22 10:38:55.580","source":"src","level":"INFO","message":"Current frame: 30","_id":"txUzq1GIGc6jX4st"}
+{"time":"03-01-22 10:38:55.701","source":"Black White routine","level":"INFO","message":"Get frame number of: 31","_id":"UMgiFseIVLsY8nIp"}
+{"time":"03-01-22 10:38:55.687","source":"src","level":"INFO","message":"Current frame: 31","_id":"H90ktBeijRZgeKvL"}
+{"time":"03-01-22 10:38:55.703","source":"Black White routine","level":"INFO","message":"Test log","_id":"B9IBwOMM5xg4W2UF"}
+{"time":"03-01-22 10:38:55.793","source":"src","level":"INFO","message":"Current frame: 32","_id":"Z5WgKhgbIJD2jok7"}
+{"time":"03-01-22 10:38:55.834","source":"Black White routine","level":"INFO","message":"Get frame number of: 32","_id":"dDw61Tq75uc1Vlfs"}
+{"time":"03-01-22 10:38:55.840","source":"Black White routine","level":"INFO","message":"Test log","_id":"kK5s070PfLtVshDy"}
+{"time":"03-01-22 10:38:55.913","source":"src","level":"INFO","message":"Current frame: 33","_id":"SoqEKQUI0zCPC5MB"}
+{"time":"03-01-22 10:38:56.002","source":"Black White routine","level":"INFO","message":"Get frame number of: 33","_id":"QbCPFLzcrImjjtHa"}
+{"time":"03-01-22 10:38:56.004","source":"Black White routine","level":"INFO","message":"Test log","_id":"A82MoYWefBKhK8MM"}
+{"time":"03-01-22 10:38:56.059","source":"src","level":"INFO","message":"Current frame: 34","_id":"4swJEc26JcILex1i"}
+{"time":"03-01-22 10:38:56.209","source":"Black White routine","level":"INFO","message":"Get frame number of: 34","_id":"zyqjqSIotE5tJxS9"}
+{"time":"03-01-22 10:38:56.226","source":"src","level":"INFO","message":"Current frame: 35","_id":"rOPYGF53QpSXTbMK"}
+{"time":"03-01-22 10:38:56.209","source":"Black White routine","level":"INFO","message":"Test log","_id":"NdLBymBeUGBzS8JZ"}
+{"time":"03-01-22 10:38:56.379","source":"src","level":"INFO","message":"Current frame: 36","_id":"CLCkvFGETAlq6KWZ"}
+{"time":"03-01-22 10:38:56.385","source":"Black White routine","level":"INFO","message":"Get frame number of: 36","_id":"hqnukn4Eq3wm6AHm"}
+{"time":"03-01-22 10:38:56.398","source":"Black White routine","level":"INFO","message":"Test log","_id":"BNvcuXigDkxDbHNb"}
+{"time":"03-01-22 10:38:56.502","source":"src","level":"INFO","message":"Current frame: 37","_id":"61xMyh2PV92dfjXv"}
+{"time":"03-01-22 10:38:56.547","source":"Black White routine","level":"INFO","message":"Get frame number of: 37","_id":"u2FvwjEVmVK9FvA7"}
+{"time":"03-01-22 10:38:56.594","source":"src","level":"INFO","message":"Current frame: 38","_id":"RiQzmmz5IoiJDYK9"}
+{"time":"03-01-22 10:38:56.554","source":"Black White routine","level":"INFO","message":"Test log","_id":"qtGviAj9chMNhdBZ"}
+{"time":"03-01-22 10:38:56.723","source":"Black White routine","level":"INFO","message":"Get frame number of: 38","_id":"1GFM474n8m889NsU"}
+{"time":"03-01-22 10:38:56.728","source":"src","level":"INFO","message":"Current frame: 39","_id":"Sxe38Sg5IoU8CU4Z"}
+{"time":"03-01-22 10:38:56.728","source":"Black White routine","level":"INFO","message":"Test log","_id":"CPCEfT9ykog7kXeq"}
+{"time":"03-01-22 10:38:56.862","source":"Black White routine","level":"INFO","message":"Get frame number of: 39","_id":"ygOVatemFgzE9QBS"}
+{"time":"03-01-22 10:38:56.880","source":"src","level":"INFO","message":"Current frame: 40","_id":"ILK1WB0gmEFDTMVD"}
+{"time":"03-01-22 10:38:56.874","source":"Black White routine","level":"INFO","message":"Test log","_id":"ijiQjAxyaw4g8bi8"}
+{"time":"03-01-22 10:38:57.029","source":"src","level":"INFO","message":"Current frame: 41","_id":"pxl0zwZFiyx5mwpt"}
+{"time":"03-01-22 10:38:57.049","source":"Black White routine","level":"INFO","message":"Get frame number of: 41","_id":"oOag1MEFEC7BigKh"}
+{"time":"03-01-22 10:38:57.059","source":"Black White routine","level":"INFO","message":"Test log","_id":"FUqRVypKMAc177Je"}
+{"time":"03-01-22 10:38:57.161","source":"src","level":"INFO","message":"Current frame: 42","_id":"ixNN61KQ7b9qk2mI"}
+{"time":"03-01-22 10:38:57.215","source":"Black White routine","level":"INFO","message":"Get frame number of: 42","_id":"oCGYjK6IsLKuW5bM"}
+{"time":"03-01-22 10:38:57.217","source":"Black White routine","level":"INFO","message":"Test log","_id":"aE8eGult2J05KFZx"}
+{"time":"03-01-22 10:38:57.267","source":"src","level":"INFO","message":"Current frame: 43","_id":"mM7nVIscx9QZXXHT"}
+{"time":"03-01-22 10:38:57.330","source":"Black White routine","level":"INFO","message":"Get frame number of: 43","_id":"6eFtES3QshqlGFDF"}
+{"time":"03-01-22 10:38:57.335","source":"Black White routine","level":"INFO","message":"Test log","_id":"Jsl6WBHJxqwZjkyH"}
+{"time":"03-01-22 10:38:57.408","source":"src","level":"INFO","message":"Current frame: 44","_id":"sDsq9NLbrEcqdi37"}
+{"time":"03-01-22 10:38:57.479","source":"Black White routine","level":"INFO","message":"Get frame number of: 44","_id":"dDEOzsOV6lzKdzDp"}
+{"time":"03-01-22 10:38:57.503","source":"Black White routine","level":"INFO","message":"Test log","_id":"pABQRNqKvwVQ87nY"}
+{"time":"03-01-22 10:38:57.513","source":"src","level":"INFO","message":"Current frame: 45","_id":"UECoRMvy1O0r0l9r"}
+{"time":"03-01-22 10:38:57.650","source":"Black White routine","level":"INFO","message":"Get frame number of: 45","_id":"hkk9I7HzcUgOmydl"}
+{"time":"03-01-22 10:38:57.681","source":"src","level":"INFO","message":"Current frame: 46","_id":"9QcVpF7CgXSWu4aV"}
+{"time":"03-01-22 10:38:57.651","source":"Black White routine","level":"INFO","message":"Test log","_id":"yw6kIQk0pRd5HM7p"}
+{"time":"03-01-22 10:38:57.817","source":"src","level":"INFO","message":"Current frame: 47","_id":"l6l7N5zI8NZiaYKL"}
+{"time":"03-01-22 10:38:57.839","source":"Black White routine","level":"INFO","message":"Get frame number of: 47","_id":"ZD24WvcPdNKpNswe"}
+{"time":"03-01-22 10:38:57.848","source":"Black White routine","level":"INFO","message":"Test log","_id":"LQAFwSbz3NYIr16l"}
+{"time":"03-01-22 10:38:57.946","source":"src","level":"INFO","message":"Current frame: 48","_id":"D4RtF7iX0ZhnpQHz"}
+{"time":"03-01-22 10:38:57.983","source":"Black White routine","level":"INFO","message":"Get frame number of: 48","_id":"EJzzZmS6uJZZal4j"}
+{"time":"03-01-22 10:38:57.985","source":"Black White routine","level":"INFO","message":"Test log","_id":"2YMrOApM6Tajvj7q"}
+{"time":"03-01-22 10:38:58.053","source":"src","level":"INFO","message":"Current frame: 49","_id":"VMQcfYeAbEMd6spg"}
+{"time":"03-01-22 10:38:58.169","source":"src","level":"INFO","message":"Current frame: 50","_id":"r8Bw2jn5moh7a2GW"}
+{"time":"03-01-22 10:38:58.155","source":"Black White routine","level":"INFO","message":"Get frame number of: 49","_id":"TDeQsqZve8QxeMpt"}
+{"time":"03-01-22 10:38:58.183","source":"Black White routine","level":"INFO","message":"Test log","_id":"7pSe0foKvX3TlS3d"}
+{"time":"03-01-22 10:38:58.334","source":"Black White routine","level":"INFO","message":"Get frame number of: 50","_id":"jlY3Ky1GugBXNuqY"}
+{"time":"03-01-22 10:38:58.335","source":"src","level":"INFO","message":"Current frame: 51","_id":"mfMOCl49elEuXYAG"}
+{"time":"03-01-22 10:38:58.339","source":"Black White routine","level":"INFO","message":"Test log","_id":"3vYWZ0KNQJXfAz15"}
+{"time":"03-01-22 10:38:58.441","source":"src","level":"INFO","message":"Current frame: 52","_id":"74Oku9TZsYWsEEwL"}
+{"time":"03-01-22 10:38:58.528","source":"Black White routine","level":"INFO","message":"Get frame number of: 52","_id":"8tQsjMQmjtiVZrk3"}
+{"time":"03-01-22 10:38:58.614","source":"src","level":"INFO","message":"Current frame: 53","_id":"eOYNz0pE8a82L98s"}
+{"time":"03-01-22 10:38:58.530","source":"Black White routine","level":"INFO","message":"Test log","_id":"06mkos9lcPxVpHez"}
+{"time":"03-01-22 10:38:58.684","source":"Black White routine","level":"INFO","message":"Get frame number of: 53","_id":"ZCbceXl1rkJ3JmiK"}
+{"time":"03-01-22 10:38:58.701","source":"Black White routine","level":"INFO","message":"Test log","_id":"XKbksMXwOvoJh41Q"}
+{"time":"03-01-22 10:38:58.762","source":"src","level":"INFO","message":"Current frame: 54","_id":"REBvpF8cEMCTI4mu"}
+{"time":"03-01-22 10:38:58.818","source":"Black White routine","level":"INFO","message":"Get frame number of: 54","_id":"dSc8r7ZJtYpRRF2f"}
+{"time":"03-01-22 10:38:58.828","source":"Black White routine","level":"INFO","message":"Test log","_id":"IeDmxmpnbTytKBBA"}
+{"time":"03-01-22 10:38:58.894","source":"src","level":"INFO","message":"Current frame: 55","_id":"PWdv56rd93JuzmF3"}
+{"time":"03-01-22 10:38:58.960","source":"Black White routine","level":"INFO","message":"Get frame number of: 55","_id":"pLd70Moc12ldTeoe"}
+{"time":"03-01-22 10:38:58.979","source":"Black White routine","level":"INFO","message":"Test log","_id":"b36FBip3EmW41y2p"}
+{"time":"03-01-22 10:38:59.066","source":"src","level":"INFO","message":"Current frame: 56","_id":"VBSwfp3c29aJvCNo"}
+{"time":"03-01-22 10:38:59.154","source":"Black White routine","level":"INFO","message":"Get frame number of: 56","_id":"fw2ZFyLnIKbD5LVF"}
+{"time":"03-01-22 10:38:59.216","source":"src","level":"INFO","message":"Current frame: 57","_id":"PQOZNCmTiyZySPVT"}
+{"time":"03-01-22 10:38:59.159","source":"Black White routine","level":"INFO","message":"Test log","_id":"2bSqubMY87dzxMg2"}
+{"time":"03-01-22 10:38:59.317","source":"src","level":"INFO","message":"Current frame: 58","_id":"aT8Ib7h5Y9YEKPEB"}
+{"time":"03-01-22 10:38:59.324","source":"Black White routine","level":"INFO","message":"Get frame number of: 58","_id":"cKvFJjzbTQiGGxXL"}
+{"time":"03-01-22 10:38:59.333","source":"Black White routine","level":"INFO","message":"Test log","_id":"dOKrzmMMrQaclXbt"}
+{"time":"03-01-22 10:38:59.451","source":"src","level":"INFO","message":"Current frame: 59","_id":"qns3Sth7YJlTL8Wc"}
+{"time":"03-01-22 10:38:59.486","source":"Black White routine","level":"INFO","message":"Get frame number of: 59","_id":"9c7MzTPX5n3l5DXU"}
+{"time":"03-01-22 10:38:59.497","source":"Black White routine","level":"INFO","message":"Test log","_id":"JBiv0W7R7CCVzUcd"}
+{"time":"03-01-22 10:38:59.592","source":"src","level":"INFO","message":"Current frame: 60","_id":"SVVZT10S5XB9ldDI"}
+{"time":"03-01-22 10:38:59.651","source":"Black White routine","level":"INFO","message":"Get frame number of: 60","_id":"jdslkoL6IVRLccsU"}
+{"time":"03-01-22 10:38:59.661","source":"Black White routine","level":"INFO","message":"Test log","_id":"wGJgaGG5gnXUkfz3"}
+{"time":"03-01-22 10:38:59.730","source":"src","level":"INFO","message":"Current frame: 61","_id":"1UOQ52igPgp2ShNS"}
+{"time":"03-01-22 10:38:59.794","source":"Black White routine","level":"INFO","message":"Get frame number of: 61","_id":"SdEDjypiM0YkZ1ZG"}
+{"time":"03-01-22 10:38:59.805","source":"Black White routine","level":"INFO","message":"Test log","_id":"tMLb2AcnSWxLD9Pl"}
+{"time":"03-01-22 10:38:59.858","source":"src","level":"INFO","message":"Current frame: 62","_id":"ot2ZwFg5v5kS2sjh"}
+{"time":"03-01-22 10:38:59.947","source":"src","level":"INFO","message":"Current frame: 63","_id":"n45iMzHrJ9TGlavJ"}
+{"time":"03-01-22 10:38:59.969","source":"Black White routine","level":"INFO","message":"Get frame number of: 63","_id":"co2D4136sp6IewGR"}
+{"time":"03-01-22 10:38:59.972","source":"Black White routine","level":"INFO","message":"Test log","_id":"Kh0hML023F73zLQa"}
+{"time":"03-01-22 10:39:00.077","source":"src","level":"INFO","message":"Current frame: 64","_id":"CyX98xeZK4yezQy4"}
+{"time":"03-01-22 10:39:00.157","source":"Black White routine","level":"INFO","message":"Get frame number of: 64","_id":"EsVpG0SZBsMx5yrN"}
+{"time":"03-01-22 10:39:00.162","source":"Black White routine","level":"INFO","message":"Test log","_id":"9260l5Rp84Ycaemr"}
+{"time":"03-01-22 10:39:00.236","source":"src","level":"INFO","message":"Current frame: 65","_id":"XYzRatMBb49CVvNa"}
+{"time":"03-01-22 10:39:00.320","source":"src","level":"INFO","message":"Current frame: 66","_id":"5zpNoMrM3EH2ajn0"}
+{"time":"03-01-22 10:39:00.335","source":"Black White routine","level":"INFO","message":"Get frame number of: 65","_id":"ClVO3vncw7BmRjyZ"}
+{"time":"03-01-22 10:39:00.346","source":"Black White routine","level":"INFO","message":"Test log","_id":"3BlfAN3c5hleMOC8"}
+{"time":"03-01-22 10:39:00.455","source":"src","level":"INFO","message":"Current frame: 67","_id":"gvUufTVTY9MHaGCU"}
+{"time":"03-01-22 10:39:00.489","source":"Black White routine","level":"INFO","message":"Get frame number of: 67","_id":"gI4aUotzkFfMptit"}
+{"time":"03-01-22 10:39:00.519","source":"Black White routine","level":"INFO","message":"Test log","_id":"B1Qo0044jdsqYtfT"}
+{"time":"03-01-22 10:39:00.598","source":"src","level":"INFO","message":"Current frame: 68","_id":"OVsp88uCCPZ8vUPD"}
+{"time":"03-01-22 10:39:00.660","source":"Black White routine","level":"INFO","message":"Get frame number of: 68","_id":"81SC6jyj1e82wJ4I"}
+{"time":"03-01-22 10:39:00.668","source":"Black White routine","level":"INFO","message":"Test log","_id":"z33WDAPvHbU4Jnti"}
+{"time":"03-01-22 10:39:00.734","source":"src","level":"INFO","message":"Current frame: 69","_id":"o7vVWRxBrqsOjvTp"}
+{"time":"03-01-22 10:39:00.788","source":"Black White routine","level":"INFO","message":"Get frame number of: 69","_id":"20OcoFzBlAVYZVTI"}
+{"time":"03-01-22 10:39:00.802","source":"Black White routine","level":"INFO","message":"Test log","_id":"5oGMSm4nS2sjvZ28"}
+{"time":"03-01-22 10:39:00.849","source":"src","level":"INFO","message":"Current frame: 70","_id":"d6FYbwfE0p6vGFIj"}
+{"time":"03-01-22 10:39:00.937","source":"Black White routine","level":"INFO","message":"Get frame number of: 70","_id":"fw6s9rZrFKx6mSt7"}
+{"time":"03-01-22 10:39:00.939","source":"Black White routine","level":"INFO","message":"Test log","_id":"72In2tFLJVKsAA5u"}
+{"time":"03-01-22 10:39:00.970","source":"src","level":"INFO","message":"Current frame: 71","_id":"EyQonRhj2fJigacK"}
+{"time":"03-01-22 10:39:01.097","source":"src","level":"INFO","message":"Current frame: 72","_id":"KIs0nJE7KHitRSwN"}
+{"time":"03-01-22 10:39:01.104","source":"Black White routine","level":"INFO","message":"Get frame number of: 72","_id":"VseHz6C220yXlnQe"}
+{"time":"03-01-22 10:39:01.108","source":"Black White routine","level":"INFO","message":"Test log","_id":"sfAEGleo9qE0SYMi"}
+{"time":"03-01-22 10:39:01.183","source":"src","level":"INFO","message":"Current frame: 73","_id":"b1Im7zW8u38udJqh"}
+{"time":"03-01-22 10:39:01.277","source":"src","level":"INFO","message":"Current frame: 74","_id":"5dVXX0lPqmgMTp9S"}
+{"time":"03-01-22 10:39:01.280","source":"Black White routine","level":"INFO","message":"Get frame number of: 73","_id":"l6X3vpNtpPyfpi9A"}
+{"time":"03-01-22 10:39:01.290","source":"Black White routine","level":"INFO","message":"Test log","_id":"0lVL1L5TLhqSNbmH"}
+{"time":"03-01-22 10:39:01.437","source":"Black White routine","level":"INFO","message":"Get frame number of: 75","_id":"Hp48nqCX9077Iuix"}
+{"time":"03-01-22 10:39:01.394","source":"src","level":"INFO","message":"Current frame: 75","_id":"XPJFrm7AkVdhubUm"}
+{"time":"03-01-22 10:39:01.437","source":"Black White routine","level":"INFO","message":"Test log","_id":"NEl2n4PBICrUvvri"}
+{"time":"03-01-22 10:39:01.533","source":"src","level":"INFO","message":"Current frame: 76","_id":"9XbSw30N8uyOytF1"}
+{"time":"03-01-22 10:39:01.556","source":"Black White routine","level":"INFO","message":"Get frame number of: 76","_id":"eajGxoW6ikVFHEjq"}
+{"time":"03-01-22 10:39:01.629","source":"src","level":"INFO","message":"Current frame: 77","_id":"F7pGaEpc5MVqPYbk"}
+{"time":"03-01-22 10:39:01.563","source":"Black White routine","level":"INFO","message":"Test log","_id":"IzAmSDdmPtiP9Xq5"}
+{"time":"03-01-22 10:39:01.768","source":"Black White routine","level":"INFO","message":"Get frame number of: 77","_id":"fKzqGeNH7p81HKcV"}
+{"time":"03-01-22 10:39:01.784","source":"src","level":"INFO","message":"Current frame: 78","_id":"rGicONawM4uU6BKr"}
+{"time":"03-01-22 10:39:01.773","source":"Black White routine","level":"INFO","message":"Test log","_id":"w0cNjG6l0RLeFNeI"}
+{"time":"03-01-22 10:39:01.962","source":"src","level":"INFO","message":"Current frame: 79","_id":"66693FN0ry6a0GSF"}
+{"time":"03-01-22 10:39:01.995","source":"Black White routine","level":"INFO","message":"Get frame number of: 79","_id":"SRJbi7W6hIFpcKTh"}
+{"time":"03-01-22 10:39:02.003","source":"Black White routine","level":"INFO","message":"Test log","_id":"gH8bz2F75AVLMMni"}
+{"time":"03-01-22 10:39:02.073","source":"src","level":"INFO","message":"Current frame: 80","_id":"Wn4vtAxGBpkbJ8OO"}
+{"time":"03-01-22 10:39:02.165","source":"Black White routine","level":"INFO","message":"Get frame number of: 80","_id":"r9b68WBeyj66ZK5i"}
+{"time":"03-01-22 10:39:02.166","source":"Black White routine","level":"INFO","message":"Test log","_id":"PEIGgyK1QUy7zazf"}
+{"time":"03-01-22 10:39:02.173","source":"src","level":"INFO","message":"Current frame: 81","_id":"dGnogPoTzwZ89okz"}

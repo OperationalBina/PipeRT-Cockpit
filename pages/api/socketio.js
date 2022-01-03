@@ -19,7 +19,6 @@ const ioHandler = (req, res) => {
           insert(db[msg["level"].toLowerCase() + "s"], msg);
         } else {
           let emitName = msg["source"] + "_" + logType
-
           let socketMessage = null
 
           if (logType == 'extra_image') {
