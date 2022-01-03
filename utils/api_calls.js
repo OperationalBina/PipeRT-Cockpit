@@ -1,5 +1,7 @@
+import { SERVER_URL } from '../config';
+
 export async function getRoutines() {
-    let response = await fetch('http://localhost:3000/api/routines');
+    let response = await fetch(`${SERVER_URL}/api/routines`);
 
     if (response.status >= 400 && response.status < 600) {
         console.log(`An error when asking routines - ${response.text}`)
@@ -11,7 +13,7 @@ export async function getRoutines() {
 
 
 export async function getLogsSummary(routineName) {
-    let response = await fetch(`http://localhost:3000/api/routine_logs/${routineName}/summary`);
+    let response = await fetch(`${SERVER_URL}/api/routine_logs/${routineName}/summary`);
 
     if (response.status >= 400 && response.status < 600) {
         console.log(`An error when asking routines - ${response.text}`)

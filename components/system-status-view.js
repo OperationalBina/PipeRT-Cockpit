@@ -3,13 +3,14 @@ import Divider from "@mui/material/Divider";
 import KeyValueView from "./key-value-view";
 import HealthScoreView from "./health-score-view";
 import { ROUTINE_LEVELS_ENUM } from "../constants"
+import { useMemo } from "react";
 
 export default function SystemStatusView({routines}) {
-  let routinesCount = routines.length,
-      stableRoutineCount = routines.filter(routine => routine.errorLevel == ROUTINE_LEVELS_ENUM.STABLE).length,
-      problemRoutineCount = routines.filter(routine => routine.errorLevel == ROUTINE_LEVELS_ENUM.PROBLEM).length,
-      crashedRoutinesCount = routines.filter(routine => routine.errorLevel == ROUTINE_LEVELS_ENUM.CRASH).length,
-      healthScore=Math.floor(((routinesCount - crashedRoutinesCount) / routinesCount) * 100)
+  const routinesCount = useMemo(() => routines.length, [routines]),
+        stableRoutineCount = useMemo(() => routines.filter(routine => routine.error_level == ROUTINE_LEVELS_ENUM.STABLE).length, [routines]), 
+        problemRoutineCount = useMemo(() => routines.filter(routine => routine.error_level == ROUTINE_LEVELS_ENUM.PROBLEM).length, [routines]),
+        crashedRoutinesCount = useMemo(() => routines.filter(routine => routine.error_level == ROUTINE_LEVELS_ENUM.CRASH).length, [routines]),
+        healthScore = useMemo(() => routinesCount != 0 ? Math.floor(((routinesCount - crashedRoutinesCount) / routinesCount) * 100) : 0, [routinesCount, crashedRoutinesCount])
 
   return (
     <Grid container spacing={3} paddingTop="5%" paddingBottom="5%">
