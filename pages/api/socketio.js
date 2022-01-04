@@ -5,7 +5,9 @@ const ioHandler = (req, res) => {
   if (!res.socket.server.io) {
     const { db } = connectToDatabase();
 
-    const io = new Server(res.socket.server);
+    const io = new Server(res.socket.server, {
+      maxHttpBufferSize: 1e8
+    });
 
     io.on("connection", (socket) => {
       socket.on("log", (msg) => {
