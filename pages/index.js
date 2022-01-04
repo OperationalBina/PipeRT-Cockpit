@@ -5,5 +5,5 @@ import RoutinePageView from "../components/routine-page-view";
 
 export default function Home() {
     return (
-      <RecoilRoot><MainPageView routineName={"test"} /></RecoilRoot>)
+      <RecoilRoot><MainPageView /></RecoilRoot>)
 }
