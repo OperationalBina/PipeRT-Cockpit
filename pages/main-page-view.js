@@ -5,20 +5,20 @@ import SystemStatusView from "../components/system-status-view";
 import SidebarNavigationView from "../components/sidebar-navigation-view";
 import RoutineExpandView from "../components/routine-expand-view";
 import Divider from "@mui/material/Divider";
-import { getRoutines } from "../utils/api_calls"
-import { useUpdatingState } from "../utils/interval_hook"
+import { apiFetch } from "../utils/http-calls"
+import useSWR from 'swr'
 
 export default function MainPageView() {
 
-  const routines = useUpdatingState([], getRoutines, 5000)
-  
+  const { data: routines } = useSWR('routines', apiFetch, { refreshInterval: 20000 })
+
   return (
     <Grid container spacing={2}>
       <Grid item xs={2} xl={2}>
         <SidebarNavigationView></SidebarNavigationView>
       </Grid>
       <Grid item xs={7.8} xl={7.8}>
-        <RoutinesView routines={routines}></RoutinesView>
+        <RoutinesView routines={routines?routines:[]}></RoutinesView>
       </Grid>
       <Grid item xs={0.2}>
         <Divider
@@ -29,7 +29,7 @@ export default function MainPageView() {
       </Grid>
       <Grid item xs={2} xl={2}>
         <SystemStatusView
-          routines={routines}
+          routines={routines?routines:[]}
         />
       </Grid>
       <Grid item xs={12} xl={12} paddingTop="5%" paddingBottom="1%">

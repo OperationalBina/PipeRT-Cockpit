@@ -8,6 +8,9 @@ import styles from "../styles/utils.module.css";
 import { Box } from "@mui/system";
 import { useRecoilValue } from "recoil";
 import { selectedRoutineState } from "../utils/shared_atoms";
+import { apiFetch } from "../utils/http-calls"
+import useSWR from 'swr'
+import { useMemo } from "react";
 
 const getBackgroundColor = (color, mode) =>
   mode === "dark" ? darken(color, 0.6) : lighten(color, 0.6);
@@ -18,13 +21,16 @@ const columns = [
   { field: "message", headerName: "Message", flex: 1, },
 ];
 
-export default function RoutineLogsView( {logsPerPage} ) {
+export default function RoutineLogsView({ logsPerPage }) {
   const selectedRoutine = useRecoilValue(selectedRoutineState);
   const [open, setOpen] = useState(false);
   const [time, setTime] = useState("");
   const [level, setLevel] = useState("");
   const [message, setMessage] = useState("");
-  const [logs, setLogs] = useState([]);
+  const { data: logs } = useSWR(selectedRoutine?`routine_logs/${selectedRoutine}`:null, apiFetch, { refreshInterval: 1000, 
+    initialData: []})
+  
+  const validatedLogs = useMemo(() => logs?logs:[], [logs])
 
   const [sortModel, setSortModel] = useState([
     {
@@ -43,16 +49,6 @@ export default function RoutineLogsView( {logsPerPage} ) {
   const handleClose = () => {
     setOpen(false);
   };
-
-  useEffect(() => {
-    if (selectedRoutine !== null) {
-      fetch(`/api/routine_logs/${selectedRoutine}`)
-        .then((res) => res.json())
-        .then((data) => {
-          setLogs(data.logs);
-        });
-    }
-  }, [selectedRoutine]);
 
   return (
     <Box
@@ -82,12 +78,12 @@ export default function RoutineLogsView( {logsPerPage} ) {
         sortModel={sortModel}
         onSortModelChange={(model) => setSortModel(model)}
         autoHeight={true}
-        rows={logs}
+        rows={validatedLogs}
         columns={columns}
         pageSize={logsPerPage}
         rowsPerPageOptions={[logsPerPage]}
         onCellClick={handleClickOpen}
-        {...logs}
+        {...validatedLogs}
         getRowId={(row) => row._id}
         getRowClassName={(params) => `${params.getValue(params.id, "level")}`}
       />
