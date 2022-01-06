@@ -1,4 +1,4 @@
-import { getRoutines } from "../../utils/api_calls"
+import { apiFetch } from "../../utils/http-calls"
 import RoutinePageView from "../../components/routine-page-view"
 import { RecoilRoot } from 'recoil';
 
@@ -12,7 +12,8 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  let paths = await getRoutines()
+  let paths = await apiFetch('routines')
+
   paths = paths.map(routine => ({ params: { routine_name: routine.name } }))
 
   return {
