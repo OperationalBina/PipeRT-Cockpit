@@ -10,7 +10,7 @@ import { useRecoilValue } from "recoil";
 import { selectedRoutineState } from "../utils/shared_atoms";
 import { apiFetch } from "../utils/http-calls"
 import useSWR from 'swr'
-import { useMemo } from "react";
+
 
 const getBackgroundColor = (color, mode) =>
   mode === "dark" ? darken(color, 0.6) : lighten(color, 0.6);
@@ -27,10 +27,12 @@ export default function RoutineLogsView({ logsPerPage }) {
   const [time, setTime] = useState("");
   const [level, setLevel] = useState("");
   const [message, setMessage] = useState("");
-  const { data: logs } = useSWR(selectedRoutine?`routine_logs/${selectedRoutine}`:null, apiFetch, { refreshInterval: 1000, 
-    initialData: []})
-  
-  const validatedLogs = useMemo(() => logs?logs:[], [logs])
+
+  const { data } = useSWR(selectedRoutine ? `routine_logs/${selectedRoutine}` : null, apiFetch, {
+    refreshInterval: 1000,
+    initialData: []
+  })
+  const logs = data ? data : []
 
   const [sortModel, setSortModel] = useState([
     {
@@ -78,12 +80,12 @@ export default function RoutineLogsView({ logsPerPage }) {
         sortModel={sortModel}
         onSortModelChange={(model) => setSortModel(model)}
         autoHeight={true}
-        rows={validatedLogs}
+        rows={logs}
         columns={columns}
         pageSize={logsPerPage}
         rowsPerPageOptions={[logsPerPage]}
         onCellClick={handleClickOpen}
-        {...validatedLogs}
+        {...logs}
         getRowId={(row) => row._id}
         getRowClassName={(params) => `${params.getValue(params.id, "level")}`}
       />

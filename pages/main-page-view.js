@@ -10,7 +10,8 @@ import useSWR from 'swr'
 
 export default function MainPageView() {
 
-  const { data: routines } = useSWR('routines', apiFetch, { refreshInterval: 20000 })
+  const { data } = useSWR('routines', apiFetch, { refreshInterval: 20000 })
+  const routines = data ? data : []
 
   return (
     <Grid container spacing={2}>
@@ -18,7 +19,7 @@ export default function MainPageView() {
         <SidebarNavigationView></SidebarNavigationView>
       </Grid>
       <Grid item xs={7.8} xl={7.8}>
-        <RoutinesView routines={routines?routines:[]}></RoutinesView>
+        <RoutinesView routines={routines}></RoutinesView>
       </Grid>
       <Grid item xs={0.2}>
         <Divider
@@ -29,7 +30,7 @@ export default function MainPageView() {
       </Grid>
       <Grid item xs={2} xl={2}>
         <SystemStatusView
-          routines={routines?routines:[]}
+          routines={routines}
         />
       </Grid>
       <Grid item xs={12} xl={12} paddingTop="5%" paddingBottom="1%">

@@ -5,7 +5,6 @@ import { useRecoilValue } from 'recoil';
 import { selectedRoutineState } from "../utils/shared_atoms";
 import { apiFetch } from "../utils/http-calls"
 import useSWR from 'swr'
-import { useMemo } from "react";
 
 const initiallogsSummary = {
   exceptions: 0,
@@ -17,15 +16,13 @@ const initiallogsSummary = {
 export default function RoutineLogsSummeryView() {
   const selectedRoutine = useRecoilValue(selectedRoutineState);
 
-  const { data: logsSummary } = useSWR(selectedRoutine?`routine_logs/${selectedRoutine}/summary`:null, apiFetch, { refreshInterval: 1000, 
-    initialData: initiallogsSummary})
-  
-  const validatedlogsSummary = useMemo(() => logsSummary?logsSummary:initiallogsSummary, [logsSummary])
+  const { data, error } = useSWR(selectedRoutine ? `routine_logs/${selectedRoutine}/summary` : null, apiFetch, { refreshInterval: 1000 })
+  const logsSummary = data ? data : initiallogsSummary
 
   return <Grid container spacing={3}>
-    <KeyValueView field="Exceptions" value={validatedlogsSummary.exceptions} />
-    <KeyValueView field="Warnings" value={validatedlogsSummary.warnings} />
-    <KeyValueView field="Info" value={validatedlogsSummary.info} />
-    <KeyValueView field="AVG FPS" value={validatedlogsSummary.avg_fps} />
+    <KeyValueView field="Exceptions" value={logsSummary.exceptions} />
+    <KeyValueView field="Warnings" value={logsSummary.warnings} />
+    <KeyValueView field="Info" value={logsSummary.info} />
+    <KeyValueView field="AVG FPS" value={logsSummary.avg_fps} />
   </Grid>
 }
