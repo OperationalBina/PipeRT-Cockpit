@@ -16,7 +16,8 @@ const initiallogsSummary = {
 export default function RoutineLogsSummeryView() {
   const selectedRoutine = useRecoilValue(selectedRoutineState);
 
-  const { data, error } = useSWR(selectedRoutine ? `routine_logs/${selectedRoutine}/summary` : null, apiFetch, { refreshInterval: 1000 })
+  const { data, error } = useSWR(selectedRoutine ? `routine_logs/${selectedRoutine}/summary` : null, apiFetch, { 
+    refreshInterval: 5000 })
   const logsSummary = data ? data : initiallogsSummary
 
   return <Grid container spacing={3}>

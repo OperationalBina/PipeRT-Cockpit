@@ -10,7 +10,7 @@ import useSWR from 'swr'
 
 export default function MainPageView() {
 
-  const { data } = useSWR('routines', apiFetch, { refreshInterval: 20000 })
+  const { data } = useSWR('routines', apiFetch, { refreshInterval: 10000 })
   const routines = data ? data : []
 
   return (

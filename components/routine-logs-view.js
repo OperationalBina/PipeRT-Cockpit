@@ -29,8 +29,7 @@ export default function RoutineLogsView({ logsPerPage }) {
   const [message, setMessage] = useState("");
 
   const { data } = useSWR(selectedRoutine ? `routine_logs/${selectedRoutine}` : null, apiFetch, {
-    refreshInterval: 1000,
-    initialData: []
+    refreshInterval: 5000,
   })
   const logs = data ? data : []
 
