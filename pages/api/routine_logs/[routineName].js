@@ -11,9 +11,7 @@ export default async function handler(req, res) {
 
     let logs = await Promise.all([exceptions, warnings, infos, plogs]);
 
-    let result = {
-      logs: [].concat.apply([], logs)
-    }
+    let result = [].concat.apply([], logs)
 
     res.json(result)
 }
