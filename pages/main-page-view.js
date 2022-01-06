@@ -5,19 +5,28 @@ import SystemStatusView from "../components/system-status-view";
 import SidebarNavigationView from "../components/sidebar-navigation-view";
 import RoutineExpandView from "../components/routine-expand-view";
 import Divider from "@mui/material/Divider";
-import { getRoutines } from "../utils/api_calls"
+import { getRoutines } from "../utils/api_calls";
+import io from 'socket.io-client'
 
 export default function MainPageView() {
+  fetch("/api/socketio").finally(() => {
+    const socket = io();
 
-  const [routines, setRoutines] = useState([])
+    socket.on("connect", () => {
+      console.log("connect");
+      socket.emit("hello");
+    });
+  });
+
+  const [routines, setRoutines] = useState([]);
 
   useEffect(() => {
     (async function updateRoutines() {
-      let routines = await getRoutines()
-      setRoutines(routines)
+      let routines = await getRoutines();
+      setRoutines(routines);
     })();
   }, []);
-      
+
   return (
     <Grid container spacing={2}>
       <Grid item xs={2} xl={2}>
@@ -34,16 +43,14 @@ export default function MainPageView() {
         />
       </Grid>
       <Grid item xs={2} xl={2}>
-        <SystemStatusView
-          routines={routines}
-        />
+        <SystemStatusView routines={routines} />
       </Grid>
       <Grid item xs={12} xl={12} paddingTop="5%" paddingBottom="1%">
         <Divider variant="middle" style={{ width: "100%" }} />
       </Grid>
       <Grid item xs={2} xl={2} />
       <Grid item xs={10} xl={8}>
-        <RoutineExpandView/>
+        <RoutineExpandView />
       </Grid>
     </Grid>
   );

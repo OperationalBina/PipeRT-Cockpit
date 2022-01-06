@@ -26,7 +26,7 @@ export default function SystemStatusView({routines}) {
         <Divider variant="middle" style={{ width: "80%" }} />
       </Grid>
       
-      <HealthScoreView health_score={healthScore} />
+      <HealthScoreView healthScore={healthScore} />
     </Grid>
   );
 }

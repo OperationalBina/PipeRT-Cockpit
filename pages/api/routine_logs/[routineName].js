@@ -8,8 +8,9 @@ export default async function handler(req, res) {
     let warnings = find(db.warnings, {source: routineName})
     let infos = find(db.infos, {source: routineName})
     let plogs = find(db.pipe_infrastructures, { source: routineName });
+    let errors = find(db.errors, { source: routineName });
 
-    let logs = await Promise.all([exceptions, warnings, infos, plogs]);
+    let logs = await Promise.all([exceptions, warnings, infos, plogs, errors]);
 
     let result = {
       logs: [].concat.apply([], logs)
