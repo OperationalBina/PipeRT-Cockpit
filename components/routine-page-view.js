@@ -6,6 +6,7 @@ import { selectedRoutineState } from "../utils/shared_atoms";
 import { useRecoilState } from "recoil";
 import { useEffect, useState } from "react";
 import io from "socket.io-client";
+import { SERVER_URL } from '../config';
 
 
 export default function RoutinePageView({ routineName }) {
@@ -19,18 +20,20 @@ export default function RoutinePageView({ routineName }) {
   setSelectedRoutine(routineName);
 
   useEffect(() => {
-    fetch("/api/socketio").finally(() => {
+    fetch(`${SERVER_URL}/api/socketio`).finally(() => {
       const socket = io();
 
-      socket.on(routineName + "_input", (input) => {
+      socket.emit("join_room", `${routineName}`);
+
+      socket.on("input", (input) => {
         setInput(input);
       });
 
-      socket.on(routineName + "_output", (output) => {
+      socket.on("output", (output) => {
         setOutput(output);
       });
 
-      socket.on(routineName + "_extra_image", (extraImage) => {
+      socket.on("extra_image", (extraImage) => {
         extraImages[extraImage["name"]] = extraImage["image_base64"];
         setExtraImages(extraImages);
       });
