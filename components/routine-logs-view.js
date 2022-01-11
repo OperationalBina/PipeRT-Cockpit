@@ -8,6 +8,7 @@ import styles from "../styles/utils.module.css";
 import { Box } from "@mui/system";
 import { useRecoilValue } from "recoil";
 import { selectedRoutineState } from "../utils/shared_atoms";
+import { SERVER_URL } from '../config';
 
 const getBackgroundColor = (color, mode) =>
   mode === "dark" ? darken(color, 0.6) : lighten(color, 0.6);
@@ -46,7 +47,7 @@ export default function RoutineLogsView( {logsPerPage} ) {
 
   useEffect(() => {
     if (selectedRoutine !== null) {
-      fetch(`/api/routine_logs/${selectedRoutine}`)
+      fetch(`${SERVER_URL}/api/routine_logs/${selectedRoutine}`)
         .then((res) => res.json())
         .then((data) => {
           setLogs(data.logs);
