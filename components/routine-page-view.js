@@ -20,8 +20,8 @@ export default function RoutinePageView({ routineName }) {
   setSelectedRoutine(routineName);
 
   useEffect(() => {
+    const socket = io();
     fetch(`${SERVER_URL}/api/socketio`).finally(() => {
-      const socket = io();
 
       socket.emit("join_room", `${routineName}`);
 
@@ -38,6 +38,10 @@ export default function RoutinePageView({ routineName }) {
         setExtraImages(extraImages);
       });
     });
+    
+    return function cleanup() {
+      socket.disconnect();
+    };
   }, []);
 
 

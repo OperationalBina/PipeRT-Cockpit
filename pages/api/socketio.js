@@ -14,6 +14,10 @@ const ioHandler = (req, res) => {
       socket.on("join_room", (msg) => {
         socket.join(msg);
       });
+      
+      socket.on('disconnect', function () {
+        console.log('disconnect client event....');
+      });
 
       socket.on("log", (msg) => {
         msg = JSON.parse(msg);
