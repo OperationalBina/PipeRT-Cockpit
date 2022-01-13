@@ -1,5 +1,5 @@
 import { DataGrid } from "@mui/x-data-grid";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
@@ -9,11 +9,9 @@ import { Box } from "@mui/system";
 import { useRecoilValue } from "recoil";
 import { selectedRoutineState } from "../utils/shared_atoms";
 import { apiFetch } from "../utils/http-calls"
+import { REFRESH_TIMES } from "../constants"
 import useSWR from 'swr'
 
-
-const getBackgroundColor = (color, mode) =>
-  mode === "dark" ? darken(color, 0.6) : lighten(color, 0.6);
 
 const columns = [
   { field: "time", headerName: "Time", flex: 0.2 },
@@ -29,7 +27,7 @@ export default function RoutineLogsView({ logsPerPage }) {
   const [message, setMessage] = useState("");
 
   const { data } = useSWR(selectedRoutine ? `routine_logs/${selectedRoutine}` : null, apiFetch, {
-    refreshInterval: 5000,
+    refreshInterval: REFRESH_TIMES.LOGS,
   })
   const logs = data ? data : []
 

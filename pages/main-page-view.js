@@ -6,11 +6,12 @@ import SidebarNavigationView from "../components/sidebar-navigation-view";
 import RoutineExpandView from "../components/routine-expand-view";
 import Divider from "@mui/material/Divider";
 import { apiFetch } from "../utils/http-calls"
+import { REFRESH_TIMES } from "../constants"
 import useSWR from 'swr'
 
 export default function MainPageView() {
 
-  const { data } = useSWR('routines', apiFetch, { refreshInterval: 10000 })
+  const { data } = useSWR('routines', apiFetch, { refreshInterval: REFRESH_TIMES.ROUTINES })
   const routines = data ? data : []
 
   return (
