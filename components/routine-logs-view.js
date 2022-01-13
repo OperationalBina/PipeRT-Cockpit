@@ -59,6 +59,12 @@ export default function RoutineLogsView({ logsPerPage }) {
             bgcolor: "#E6B0AA",
           },
         },
+        "& .ERROR": {
+          bgcolor: "#F1948A",
+          "&:hover": {
+            bgcolor: "#E6B0AA",
+          },
+        },
         "& .WARNING": {
           bgcolor: "#FAD7A0",
           "&:hover": {

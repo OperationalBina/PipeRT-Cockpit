@@ -15,7 +15,7 @@ function connectToDatabase() {
   db.exceptions = new Datastore({ filename: 'exceptions.db', autoload: true });
   db.routines = new Datastore({ filename: 'routines.db', autoload: true });
   db.pipe_infrastructures = new Datastore({ filename: 'pipe_infrastructures.db', autoload: true });
-
+  db.errors = new Datastore({ filename: 'errors.db', autoload: true});
   cachedDb = db
 
   return { db }

@@ -15,7 +15,7 @@ export default async function handler(req, res) {
         exceptions: exceptions,
         warnings: warnings,
         info: infos,
-        avg_fps: 1
+        avgFps: 1
     }
 
     res.json(result)
