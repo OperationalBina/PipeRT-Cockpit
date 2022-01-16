@@ -22,7 +22,10 @@ export default function EventsNotifyView({ routines, events }) {
   }
 
   return (
-    <Grid container spacing={3} paddingTop="5%">
+    <Grid container spacing={2} paddingTop="10%" className={styles.centered}>
+      <Grid item xs={12} className={styles.centered}>
+        Events
+        </Grid>
       <Grid item xs={12} className={styles.centered}>
         <FormControl
           fullWidth

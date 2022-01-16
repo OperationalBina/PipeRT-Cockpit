@@ -13,17 +13,14 @@ import ArticleIcon from '@mui/icons-material/Article';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import Grid from "@mui/material/Grid";
 import EventsNotifyView from "./events-notify-view";
+import styles from "../styles/utils.module.css";
 
 export default function SidebarNavigationView() {
   return (
     <Box sx={{ display: 'flex' }}>
       <Grid container
-        sx={{
-          width: '100%',
-          flexShrink: 0,
-        }}
-        variant="permanent"
-        anchor="left"
+        padding={2}
+        spacing={1}
       >
         <Grid item xs={12}>
         <Toolbar>
@@ -33,6 +30,7 @@ export default function SidebarNavigationView() {
           <ListItemText primary={"Monitor"} />
         </Toolbar>
         </Grid>
+
         <Grid item xs={12}>
         <Divider/>
         </Grid>
@@ -49,10 +47,12 @@ export default function SidebarNavigationView() {
             </Grid>
           ))}
         </List>
-        <Grid item xs={12}>
+        <Grid item xs={12} >
         <Divider />
         </Grid>
-        <EventsNotifyView />
+        <Grid item xs={12}>
+        <EventsNotifyView className={styles.centered}/>
+        </Grid>
       </Grid>
     </Box>
   );
