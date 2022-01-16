@@ -11,11 +11,13 @@ import MonitorIcon from '@mui/icons-material/Monitor';
 import MonitorHeartIcon from '@mui/icons-material/MonitorHeart';
 import ArticleIcon from '@mui/icons-material/Article';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+import Grid from "@mui/material/Grid";
+import EventsNotifyView from "./events-notify-view";
 
 export default function SidebarNavigationView() {
   return (
     <Box sx={{ display: 'flex' }}>
-      <Drawer
+      <Grid container
         sx={{
           width: '100%',
           flexShrink: 0,
@@ -23,24 +25,35 @@ export default function SidebarNavigationView() {
         variant="permanent"
         anchor="left"
       >
+        <Grid item xs={12}>
         <Toolbar>
           <ListItemIcon>
             <MonitorIcon />
           </ListItemIcon>
           <ListItemText primary={"Monitor"} />
         </Toolbar>
-        <Divider />
+        </Grid>
+        <Grid item xs={12}>
+        <Divider/>
+        </Grid>
+
         <List>
           {["Health", "Logs", "Visualizer"].map((text) => (
+            <Grid item xs={12}>
             <ListItem button key={text}>
               <ListItemIcon>
                 {text === "Health" ? <MonitorHeartIcon /> : text === "Logs" ? <ArticleIcon /> : <RemoveRedEyeIcon />}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
+            </Grid>
           ))}
         </List>
-      </Drawer>
+        <Grid item xs={12}>
+        <Divider />
+        </Grid>
+        <EventsNotifyView />
+      </Grid>
     </Box>
   );
 }
