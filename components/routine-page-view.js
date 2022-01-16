@@ -21,7 +21,7 @@ export default function RoutinePageView({ routineName }) {
 
   useEffect(() => {
     const socket = io();
-    fetch(`${SERVER_URL}/api/socketio`).finally(() => {
+    fetch(`${SERVER_URL}/api/socketio`).then(() => {
 
       socket.emit("join_room", `${routineName}`);
 

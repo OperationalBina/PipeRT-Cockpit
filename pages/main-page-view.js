@@ -10,7 +10,7 @@ import io from 'socket.io-client'
 import { SERVER_URL } from '../config';
 
 export default function MainPageView() {
-  fetch(`${SERVER_URL}/api/socketio`).finally(() => {
+  fetch(`${SERVER_URL}/api/socketio`).then(() => {
     const socket = io();
 
     socket.on("connect", () => {
