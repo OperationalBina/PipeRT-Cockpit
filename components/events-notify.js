@@ -1,6 +1,6 @@
 import EventsNotifyView from "./events-notify-view";
 import { useEffect, useState } from "react";
-import SERVER_URL from "../config/index";
+import {PIPE_API} from "../config"
 
 function escapeRegExp(string) {
   return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); // $& means the whole matched string
@@ -11,8 +11,8 @@ function replaceAll(str, find, replace) {
 }
 
 async function notifyEvent(routine, event, args) {
-  let SERVER_URL = "http://localhost:4000";
-  let request = `${SERVER_URL}/execute?event_name=${event}`;
+//   let SERVER_URL = "http://localhost:4000";
+  let request = `${PIPE_API}/execute?event_name=${event}`;
 
   if (routine !== null && routine !== undefined && routine.length === 2) {
     request += `&specific_flow_routines={"${routine[0]}": ["${routine[1]}"]}`;
