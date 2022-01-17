@@ -9,16 +9,25 @@ import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import { Button } from "@mui/material";
 
-export default function EventsNotifyView({ routines, events }) {
+export default function EventsNotifyView({ routines, events, notifyEvent }) {
   const [routine, setRoutine] = useState("");
   const [event, setEvent] = useState("");
+  const [args, setArgs] = useState("");
 
-  const onRoutineChange = (event) => {
-    setRoutine(event.target.value)
+  const onRoutineChange = (webEvent) => {
+    setRoutine(webEvent.target.value)
   }
 
-  const onEventChange = (event) => {
-    setEvent(event.target.value)
+  const onEventChange = (webEvent) => {
+    setEvent(webEvent.target.value)
+  }
+
+  const onArgsChange = (webEvent) => {
+    setArgs(webEvent.target.value)
+  }
+
+  const onClick = (webEvent) => {
+    notifyEvent(routine, event, args)
   }
 
   return (
@@ -45,9 +54,9 @@ export default function EventsNotifyView({ routines, events }) {
               width: "100%",
             }}
           >
-            <MenuItem value={10}>First</MenuItem>
-            <MenuItem value={20}>Sec</MenuItem>
-            <MenuItem value={30}>Dest</MenuItem>
+            {routines.map(routine => {
+              return <MenuItem value={routine}>{routine}</MenuItem>
+            })}
           </Select>
         </FormControl>
       </Grid>
@@ -71,19 +80,19 @@ export default function EventsNotifyView({ routines, events }) {
               width: "100%",
             }}
           >
-            <MenuItem value={10}>First</MenuItem>
-            <MenuItem value={20}>Sec</MenuItem>
-            <MenuItem value={30}>Dest</MenuItem>
+            {events.map(event => {
+              return <MenuItem value={event}>{event}</MenuItem>
+            })}
           </Select>
         </FormControl>
       </Grid>
 
       <Grid item xs={12} className={styles.centered} style={{width: "80%"}} fullWidth>
-        <TextField id="outlined-basic" label="Arguments"variant="outlined" style={{width: "80%"}}/>
+        <TextField id="outlined-basic" label="Arguments"variant="outlined" style={{width: "80%"}} onChangeCapture={onArgsChange}/>
       </Grid>
 
       <Grid item xs={12} className={styles.centered} style={{width: "80%"}} fullWidth>
-      <Button variant="contained" style={{width: "80%"}}>NOTIFY</Button>
+      <Button variant="contained" style={{width: "80%"}} onClick={onClick}>NOTIFY</Button>
       </Grid>
     </Grid>
   );

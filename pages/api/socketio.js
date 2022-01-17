@@ -40,13 +40,11 @@ const ioHandler = (req, res) => {
         let events = msg["Events"]
         
         for (let event of events) {
-          let events_found = await find(db.events, {
+          let eventsFound = await find(db.events, {
             event_name: event,
           });
           
-          console.log(events_found)
-
-          if (events_found.length === 0) {
+          if (eventsFound !== null && eventsFound.length === 0) {
             insert(db.events, {event_name: event})
           }
         }

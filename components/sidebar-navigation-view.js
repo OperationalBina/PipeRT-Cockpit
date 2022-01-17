@@ -12,7 +12,7 @@ import MonitorHeartIcon from '@mui/icons-material/MonitorHeart';
 import ArticleIcon from '@mui/icons-material/Article';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import Grid from "@mui/material/Grid";
-import EventsNotifyView from "./events-notify-view";
+import EventsNotify from "./events-notify";
 import styles from "../styles/utils.module.css";
 
 export default function SidebarNavigationView() {
@@ -51,7 +51,7 @@ export default function SidebarNavigationView() {
         <Divider />
         </Grid>
         <Grid item xs={12}>
-        <EventsNotifyView className={styles.centered}/>
+        <EventsNotify className={styles.centered}/>
         </Grid>
       </Grid>
     </Box>
