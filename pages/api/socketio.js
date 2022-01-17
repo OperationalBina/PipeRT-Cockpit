@@ -34,15 +34,28 @@ const ioHandler = (req, res) => {
       });
 
       socket.on("pipe_creation", async (msg) => {
-        msg = JSON.parse(JSON.parse(msg)["message"].replaceAll("'", '"'))[
-          "Pipe structure"
-        ];
+        msg = JSON.parse(JSON.parse(msg)["message"].replaceAll("'", '"'))
 
-        let pipeName = Object.keys(msg)[0];
-        let flows = Object.keys(msg[pipeName]);
+        let pipeStructure = msg["Pipe structure"];
+        let events = msg["Events"]
+        
+        for (let event of events) {
+          let events_found = await find(db.events, {
+            event_name: event,
+          });
+          
+          console.log(events_found)
+
+          if (events_found.length === 0) {
+            insert(db.events, {event_name: event})
+          }
+        }
+
+        let pipeName = Object.keys(pipeStructure)[0];
+        let flows = Object.keys(pipeStructure[pipeName]);
 
         for (let flow of flows) {
-          for (let routine of Object.values(msg[pipeName][flow])) {
+          for (let routine of Object.values(pipeStructure[pipeName][flow])) {
             let dbRoutine = await find(db.routines, {
               full_name: `${pipeName}.${flow}.${routine}`,
             });
