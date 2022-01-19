@@ -1,6 +1,18 @@
 import EventsNotifyView from "./events-notify-view";
 import { useEffect, useState } from "react";
-import {PIPE_API} from "../config"
+import { PIPE_API } from "../config";
+
+function createJsonArguments(args) {
+  const argsSperated = args.split(",");
+  let json = {};
+
+  argsSperated.forEach((arg) => {
+    const keyValue = arg.split(":");
+    json[keyValue[0]] = keyValue[1];
+  });
+
+  return json;
+}
 
 function escapeRegExp(string) {
   return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); // $& means the whole matched string
@@ -11,19 +23,32 @@ function replaceAll(str, find, replace) {
 }
 
 async function notifyEvent(routine, event, args) {
-//   let SERVER_URL = "http://localhost:4000";
-  let request = `${PIPE_API}/execute?event_name=${event}`;
+  const request = `${PIPE_API}/execute/${event}`;
+  const extraArgs = `${replaceAll(args, "=", ":")}`;
+  const extraArgsJson = createJsonArguments(extraArgs);
+
+  let requestArguments = {
+    args: extraArgsJson,
+  };
 
   if (routine !== null && routine !== undefined && routine.length === 2) {
-    request += `&specific_flow_routines={"${routine[0]}": ["${routine[1]}"]}`;
-  }
-
-  if (args !== null) {
-    request += `&${replaceAll(args, ",", "&")}`;
+    let specificFlowRoutines = {};
+    const flowName = routine[0];
+    const routineName = routine[1];
+    specificFlowRoutines[flowName] = [`${routineName}`];
+    requestArguments["specific_flow_routines"] = specificFlowRoutines;
   }
 
   try {
-    await fetch(request);
+    await fetch(request, {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(requestArguments),
+    });
   } catch (ex) {
     console.log(ex);
   }
@@ -37,10 +62,7 @@ export default function EventsNotify() {
     fetch(`/api/events/`)
       .then((res) => res.json())
       .then((data) => {
-        let eventsTemp = [];
-        for (let event of data) {
-          eventsTemp.push(event["event_name"]);
-        }
+        let eventsTemp = data.map((event) => event["event_name"]);
         setEvents(eventsTemp);
       });
   }, []);
@@ -49,16 +71,12 @@ export default function EventsNotify() {
     fetch(`/api/routines/`)
       .then((res) => res.json())
       .then((data) => {
-        let componentsTemp = [];
-        for (let component of data) {
-          const fullName = component["full_name"];
-
-          // Remove the logger name from the full name
-          let loggerFlowRoutine = fullName.split(".");
+        let componentsTemp = data.map((component) => {
+          let loggerFlowRoutine = component["full_name"].split(".");
           loggerFlowRoutine.shift();
 
-          componentsTemp.push(loggerFlowRoutine);
-        }
+          return loggerFlowRoutine;
+        });
         setComponents(componentsTemp);
       });
   }, []);
