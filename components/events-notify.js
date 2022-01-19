@@ -28,7 +28,7 @@ async function notifyEvent(routine, event, args) {
   const extraArgsJson = createJsonArguments(extraArgs);
 
   let requestArguments = {
-    args: extraArgsJson,
+    extra_args: extraArgsJson,
   };
 
   if (routine !== null && routine !== undefined && routine.length === 2) {
