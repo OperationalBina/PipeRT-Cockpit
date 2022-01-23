@@ -72,6 +72,7 @@ export default function EventsNotify() {
     fetch(`/api/routines/`)
       .then((res) => res.json())
       .then((data) => {
+        // Add default option to select all routines.
         data.push({"routine_name": PIPE_NAME, "events": []})
         setRoutines(data);
       });
