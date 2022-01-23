@@ -6,7 +6,7 @@ const ioHandler = (req, res) => {
     const { db } = connectToDatabase();
 
     const io = new Server(res.socket.server, {
-      maxHttpBufferSize: 1e8
+      maxHttpBufferSize: 1e8,
     });
 
     io.on("connection", (socket) => {
@@ -14,57 +14,61 @@ const ioHandler = (req, res) => {
         socket.broadcast.emit("get_log", msg);
         msg = JSON.parse(msg);
         msg["source"] = msg["source"].split(".").at(-1);
-        
-        let logType = msg['message'].split(':')[0]
 
-        if (logType != 'input' && logType != 'output' && logType != 'extra_image') {
+        let logType = msg["message"].split(":")[0];
+
+        if (
+          logType != "input" &&
+          logType != "output" &&
+          logType != "extra_image"
+        ) {
           insert(db[msg["level"].toLowerCase() + "s"], msg);
         } else {
-          let emitName = msg["source"] + "_" + logType
-          let socketMessage = null
+          let emitName = msg["source"] + "_" + logType;
+          let socketMessage = null;
 
-          if (logType == 'extra_image') {
-            socketMessage = extractExtraImageDetailsFromExtraInputMessage(msg)
+          if (logType == "extra_image") {
+            socketMessage = extractExtraImageDetailsFromExtraInputMessage(msg);
           } else {
             socketMessage = extractImageFromInputOutputMessage(msg);
           }
 
-          socket.broadcast.emit(emitName, socketMessage)
+          socket.broadcast.emit(emitName, socketMessage);
         }
       });
 
       socket.on("pipe_creation", async (msg) => {
-        msg = JSON.parse(JSON.parse(msg)["message"].replaceAll("'", '"'))
+        msg = JSON.parse(JSON.parse(msg)["message"].replaceAll("'", '"'));
 
-        let pipeStructure = msg["Pipe structure"];
-        let events = msg["Events"]
-        
+        let routines = msg["Routines"];
+        let events = msg["Events"];
+
         for (let event of events) {
           let eventsFound = await find(db.events, {
             event_name: event,
           });
-          
+
           if (eventsFound !== null && eventsFound.length === 0) {
-            insert(db.events, {event_name: event})
+            insert(db.events, { event_name: event });
           }
         }
 
-        let pipeName = Object.keys(pipeStructure)[0];
-        let flows = Object.keys(pipeStructure[pipeName]);
+        for(const routine of routines) {
+          let flow_name = routine["flow_name"];
+          let routine_name = routine["routine_name"];
 
-        for (let flow of flows) {
-          for (let routine of Object.values(pipeStructure[pipeName][flow])) {
-            let dbRoutine = await find(db.routines, {
-              full_name: `${pipeName}.${flow}.${routine}`,
+          let existingRoutines = await find(db.routines, {
+            routine_name: `${routine_name}`,
+          });
+
+          if (existingRoutines.length === 0) {
+            insert(db.routines, {
+              error_level: 0,
+              routine_name: `${routine}`,
+              flow_name: `${flow_name}`,
+              name: `${routine}`,
             });
-            if (dbRoutine.length === 0) {
-              insert(db.routines, {
-                error_level: 0,
-                full_name: `${pipeName}.${flow}.${routine}`,
-                name: `${routine}`,
-              });
-            }
-          }
+          }        
         }
       });
     });
@@ -84,24 +88,23 @@ export const config = {
 export default ioHandler;
 
 function extractImageFromInputOutputMessage(msg) {
-  let additionalData = msg['message'].split("'data':")[1];
+  let additionalData = msg["message"].split("'data':")[1];
 
   let strJsonAdditionalData = additionalData.split("'").join('"');
-  strJsonAdditionalData = strJsonAdditionalData.replace('\n', '');
+  strJsonAdditionalData = strJsonAdditionalData.replace("\n", "");
 
   let jsonAdditionalData = JSON.parse(strJsonAdditionalData);
 
-  let image = jsonAdditionalData['image_base64'];
+  let image = jsonAdditionalData["image_base64"];
 
   return image;
 }
 
 function extractExtraImageDetailsFromExtraInputMessage(msg) {
-  let imageDetails = msg['message'].split("extra_image:")[1];
+  let imageDetails = msg["message"].split("extra_image:")[1];
 
   let strImageDetails = imageDetails.split("'").join('"');
-  strImageDetails = strImageDetails.replace('\n', '');
+  strImageDetails = strImageDetails.replace("\n", "");
 
   return JSON.parse(strImageDetails);
 }
-

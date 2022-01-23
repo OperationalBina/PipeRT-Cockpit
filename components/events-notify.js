@@ -23,7 +23,6 @@ function replaceAll(str, find, replace) {
 }
 
 async function notifyEvent(routine, event, args) {
-  const request = `${PIPE_API}/execute/${event}`;
   const extraArgs = `${replaceAll(args, "=", ":")}`;
   const extraArgsJson = createJsonArguments(extraArgs);
 
@@ -31,12 +30,12 @@ async function notifyEvent(routine, event, args) {
     extra_args: extraArgsJson,
   };
 
-  if (routine !== null && routine !== undefined && routine.length === 2) {
-    let specificFlowRoutines = {};
-    const flowName = routine[0];
-    const routineName = routine[1];
-    specificFlowRoutines[flowName] = [`${routineName}`];
-    requestArguments["specific_flow_routines"] = specificFlowRoutines;
+  let request = ""
+
+  if (routine !== undefined && routine !== "") {
+    request = `${PIPE_API}/routines/${routine['routine_name']}/events/${event}/execute/`;
+  } else {
+    request = `${PIPE_API}/routines/events/${event}/execute/`;
   }
 
   try {
@@ -56,7 +55,7 @@ async function notifyEvent(routine, event, args) {
 
 export default function EventsNotify() {
   const [events, setEvents] = useState([]);
-  const [components, setComponents] = useState([]);
+  const [routines, setRoutines] = useState([]);
 
   useEffect(() => {
     fetch(`/api/events/`)
@@ -71,20 +70,15 @@ export default function EventsNotify() {
     fetch(`/api/routines/`)
       .then((res) => res.json())
       .then((data) => {
-        let componentsTemp = data.map((component) => {
-          let loggerFlowRoutine = component["full_name"].split(".");
-          loggerFlowRoutine.shift();
-
-          return loggerFlowRoutine;
-        });
-        setComponents(componentsTemp);
+        console.log(data)
+        setRoutines(data);
       });
   }, []);
 
   return (
     <EventsNotifyView
       events={events}
-      routines={components}
+      routines={routines}
       notifyEvent={notifyEvent}
     />
   );

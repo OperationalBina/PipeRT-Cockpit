@@ -55,7 +55,7 @@ export default function EventsNotifyView({ routines, events, notifyEvent }) {
             }}
           >
             {routines.map(routine => {
-              return <MenuItem value={routine}>{routine}</MenuItem>
+              return <MenuItem value={routine}>{routine['routine_name']}</MenuItem>
             })}
           </Select>
         </FormControl>
