@@ -2,6 +2,8 @@ import EventsNotifyView from "./events-notify-view";
 import { useEffect, useState } from "react";
 import { PIPE_API } from "../config";
 
+const PIPE_NAME = "Pipe"
+
 function createJsonArguments(args) {
   const argsSperated = args.split(",");
   let json = {};
@@ -32,7 +34,7 @@ async function notifyEvent(routine, event, args) {
 
   let request = ""
 
-  if (routine !== undefined && routine !== "") {
+  if (routine !== undefined && routine !== "" && routine !== PIPE_NAME) {
     request = `${PIPE_API}/routines/${routine['routine_name']}/events/${event}/execute/`;
   } else {
     request = `${PIPE_API}/routines/events/${event}/execute/`;
@@ -70,7 +72,7 @@ export default function EventsNotify() {
     fetch(`/api/routines/`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
+        data.push({"routine_name": PIPE_NAME, "events": []})
         setRoutines(data);
       });
   }, []);

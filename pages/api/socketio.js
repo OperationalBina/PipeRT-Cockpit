@@ -64,9 +64,10 @@ const ioHandler = (req, res) => {
           if (existingRoutines.length === 0) {
             insert(db.routines, {
               error_level: 0,
-              routine_name: `${routine}`,
+              routine_name: `${routine_name}`,
               flow_name: `${flow_name}`,
-              name: `${routine}`,
+              name: `${flow_name}-${routine_name}`,
+              events: routine["events"]
             });
           }        
         }
