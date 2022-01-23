@@ -10,8 +10,16 @@ const ioHandler = (req, res) => {
     });
 
     io.on("connection", (socket) => {
+
+      socket.on("join_room", (msg) => {
+        socket.join(msg);
+      });
+      
+      socket.on('disconnect', function () {
+        console.log('disconnect client event....');
+      });
+
       socket.on("log", (msg) => {
-        socket.broadcast.emit("get_log", msg);
         msg = JSON.parse(msg);
         msg["source"] = msg["source"].split(".").at(-1);
         
@@ -29,7 +37,7 @@ const ioHandler = (req, res) => {
             socketMessage = extractImageFromInputOutputMessage(msg);
           }
 
-          socket.broadcast.emit(emitName, socketMessage)
+          socket.to(msg["source"]).emit(logType, socketMessage)
         }
       });
 
