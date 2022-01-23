@@ -14,27 +14,31 @@ export default function EventsNotifyView({ routines, events, notifyEvent }) {
   const [event, setEvent] = useState("");
   const [args, setArgs] = useState("");
 
+  const [eventsSelection, setEventsSelection] = useState([]);
+
   const onRoutineChange = (webEvent) => {
-    setRoutine(webEvent.target.value)
-  }
+    const selectedRoutine = webEvent.target.value;
+    setRoutine(selectedRoutine);
+    setEventsSelection(selectedRoutine["events"]);
+  };
 
   const onEventChange = (webEvent) => {
-    setEvent(webEvent.target.value)
-  }
+    setEvent(webEvent.target.value);
+  };
 
   const onArgsChange = (webEvent) => {
-    setArgs(webEvent.target.value)
-  }
+    setArgs(webEvent.target.value);
+  };
 
   const onClick = (webEvent) => {
-    notifyEvent(routine, event, args)
-  }
+    notifyEvent(routine, event, args);
+  };
 
   return (
     <Grid container spacing={2} paddingTop="10%" className={styles.centered}>
       <Grid item xs={12} className={styles.centered}>
         Events
-        </Grid>
+      </Grid>
       <Grid item xs={12} className={styles.centered}>
         <FormControl
           fullWidth
@@ -54,8 +58,10 @@ export default function EventsNotifyView({ routines, events, notifyEvent }) {
               width: "100%",
             }}
           >
-            {routines.map(routine => {
-              return <MenuItem value={routine}>{routine['routine_name']}</MenuItem>
+            {routines.map((routine) => {
+              return (
+                <MenuItem value={routine}>{routine["routine_name"]}</MenuItem>
+              );
             })}
           </Select>
         </FormControl>
@@ -80,19 +86,43 @@ export default function EventsNotifyView({ routines, events, notifyEvent }) {
               width: "100%",
             }}
           >
-            {events.map(event => {
-              return <MenuItem value={event}>{event}</MenuItem>
-            })}
+            {eventsSelection.length > 0
+              ? eventsSelection.map((aaa) => {
+                  return <MenuItem value={aaa}>{aaa}</MenuItem>;
+                })
+              : events.map((aaa) => {
+                  return <MenuItem value={aaa}>{aaa}</MenuItem>;
+                })}
           </Select>
         </FormControl>
       </Grid>
 
-      <Grid item xs={12} className={styles.centered} style={{width: "80%"}} fullWidth>
-        <TextField id="outlined-basic" label="Arguments"variant="outlined" style={{width: "80%"}} onChangeCapture={onArgsChange}/>
+      <Grid
+        item
+        xs={12}
+        className={styles.centered}
+        style={{ width: "80%" }}
+        fullWidth
+      >
+        <TextField
+          id="outlined-basic"
+          label="Arguments"
+          variant="outlined"
+          style={{ width: "80%" }}
+          onChangeCapture={onArgsChange}
+        />
       </Grid>
 
-      <Grid item xs={12} className={styles.centered} style={{width: "80%"}} fullWidth>
-      <Button variant="contained" style={{width: "80%"}} onClick={onClick}>NOTIFY</Button>
+      <Grid
+        item
+        xs={12}
+        className={styles.centered}
+        style={{ width: "80%" }}
+        fullWidth
+      >
+        <Button variant="contained" style={{ width: "80%" }} onClick={onClick}>
+          NOTIFY
+        </Button>
       </Grid>
     </Grid>
   );
