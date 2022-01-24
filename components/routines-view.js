@@ -13,7 +13,7 @@ export default function RoutinesView({ routines }) {
       {routines.map(function (routine, index) {
         return (
           <Grid item xs={2} key={index} style={{background: selectedRoutine == routine.name? '#a8e6ff': null}} 
-          onClick={() => setSelectedRoutine(routine.name)} onDoubleClick= {() => router.push(`/routines/${routine.name}`)}>
+          onClick={() => setSelectedRoutine(routine.name)} onDoubleClick= {() => router.push(`/routines/${routine.routine_name}`)}>
             <RoutineView routine={routine} />
           </Grid>
         );

@@ -13,8 +13,7 @@ export async function getStaticProps({ params }) {
 
 export async function getStaticPaths() {
   let paths = await apiFetch('routines')
-
-  paths = paths.map(routine => ({ params: { routine_name: routine.name } }))
+  paths = paths.map(routine => ({ params: { routineName: `${routine.routine_name}` } }))
 
   return {
     paths,
