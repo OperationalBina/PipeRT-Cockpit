@@ -4,6 +4,7 @@ import { RecoilRoot } from 'recoil';
 
 
 export async function getStaticProps({ params }) {
+  console.log(params.routineName);
   return {
     props: {
       routineName: params.routineName,
