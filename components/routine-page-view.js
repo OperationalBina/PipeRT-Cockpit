@@ -34,14 +34,14 @@ export default function RoutinePageView({ routineName }) {
         setOutput(output);
       });
 
-      // try {
-      //   await fetch(`${PIPE_API}/routines/${routineName}/events/${LOG_DATA}/execute/`, {
-      //     method: "POST",
-      //     mode: "cors",
-      //   });
-      // } catch (ex) {
-      //   console.log(ex);
-      // }
+      try {
+        await fetch(`${PIPE_API}/routines/${routineName}/events/${LOG_DATA}/execute/`, {
+          method: "POST",
+          mode: "cors",
+        });
+      } catch (ex) {
+        console.log(ex);
+      }
 
       socket.on("extra_image", (extraImage) => {
         extraImages[extraImage["name"]] = extraImage["image_base64"];
@@ -52,14 +52,14 @@ export default function RoutinePageView({ routineName }) {
     return async function cleanup() {
       socket.disconnect();
 
-      // try {
-      //   await fetch(`${PIPE_API}/routines/${routineName}/events/${LOG_DATA}/execute/`, {
-      //     method: "POST",
-      //     mode: "cors",
-      //   });
-      // } catch (ex) {
-      //   console.log(ex);
-      // }
+      try {
+        await fetch(`${PIPE_API}/routines/${routineName}/events/${LOG_DATA}/execute/`, {
+          method: "POST",
+          mode: "cors",
+        });
+      } catch (ex) {
+        console.log(ex);
+      }
     };
   }, []);
 
