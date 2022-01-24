@@ -25,7 +25,7 @@ function replaceAll(str, find, replace) {
 }
 
 async function notifyEvent(routine, event, args) {
-  const extraArgs = `${replaceAll(args, "=", ":")}`;
+  const extraArgs = replaceAll(args, "=", ":");
   const extraArgsJson = createJsonArguments(extraArgs);
 
   let requestArguments = {
