@@ -17,9 +17,6 @@ export async function getStaticPaths() {
 
   paths = paths.map(routine => ({ params: { routineName: `${routine.routine_name}` } }))
 
-  console.log(paths)
-
-
   return {
     paths,
     fallback: false
