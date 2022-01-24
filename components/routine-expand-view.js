@@ -1,5 +1,5 @@
 import { Grid } from "@mui/material";
-import RoutineLogsSummeryView from "./routine-logs-summery-view";
+import RoutineLogsSummaryView from "./routine-logs-summary-view";
 import RoutineLogsView from "./routine-logs-view";
 import Divider from "@mui/material/Divider";
 
@@ -17,7 +17,7 @@ export default function RoutineExpandView() {
           orientation="vertical"/>
       </Grid>
       <Grid item xs={2}>
-        <RoutineLogsSummeryView/>
+        <RoutineLogsSummaryView/>
       </Grid>
     </Grid>
   );

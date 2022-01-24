@@ -1,14 +1,17 @@
 import { Grid } from "@mui/material";
-import { useEffect, useState } from "react";
 import RoutinesView from "../components/routines-view";
 import SystemStatusView from "../components/system-status-view";
 import SidebarNavigationView from "../components/sidebar-navigation-view";
 import RoutineExpandView from "../components/routine-expand-view";
 import Divider from "@mui/material/Divider";
-import { getRoutines } from "../utils/api_calls";
-import io from "socket.io-client";
+import { apiFetch } from "../utils/http-calls"
+import { REFRESH_TIMES } from "../constants"
+import io from 'socket.io-client'
+import useSWR from 'swr'
 
 export default function MainPageView() {
+  const { data } = useSWR('routines', apiFetch, { refreshInterval: REFRESH_TIMES.ROUTINES })
+  const routines = data ? data : []
   fetch("/api/socketio").finally(() => {
     const socket = io();
 
@@ -17,15 +20,6 @@ export default function MainPageView() {
       socket.emit("hello");
     });
   });
-
-  const [routines, setRoutines] = useState([]);
-
-  useEffect(() => {
-    (async function updateRoutines() {
-      let routines = await getRoutines();
-      setRoutines(routines);
-    })();
-  }, []);
 
   return (
     <Grid container spacing={2} direction="row">

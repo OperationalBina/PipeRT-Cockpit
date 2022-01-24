@@ -87,11 +87,11 @@ export default function EventsNotifyView({ routines, events, notifyEvent }) {
             }}
           >
             {eventsSelection.length > 0
-              ? eventsSelection.map((aaa) => {
-                  return <MenuItem value={aaa}>{aaa}</MenuItem>;
+              ? eventsSelection.map((event) => {
+                  return <MenuItem value={event}>{event}</MenuItem>;
                 })
-              : events.map((aaa) => {
-                  return <MenuItem value={aaa}>{aaa}</MenuItem>;
+              : events.map((event) => {
+                  return <MenuItem value={event}>{event}</MenuItem>;
                 })}
           </Select>
         </FormControl>

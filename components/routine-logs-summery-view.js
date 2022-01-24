@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import KeyValueView from "./key-value-view";
 import { useRecoilValue } from 'recoil';
 import { selectedRoutineState } from "../utils/shared_atoms";
+import { SERVER_URL } from '../config';
 
 const initialLogsCounter = {
   exceptions: 0,
@@ -17,7 +18,7 @@ export default function RoutineLogsSummeryView() {
 
   useEffect(() => {
     if (selectedRoutine !== null) {
-      fetch(`http://localhost:3000/api/routine_logs/${selectedRoutine}/summary`)
+      fetch(`${SERVER_URL}/api/routine_logs/${selectedRoutine}/summary`)
         .then(res => res.json())
         .then(data => {
           setLogsCounter(data)
