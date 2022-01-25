@@ -7,6 +7,7 @@ import { useRecoilState } from "recoil";
 import { useEffect, useState } from "react";
 import io from "socket.io-client";
 import { SERVER_URL } from '../config';
+import { PIPE_API, LOG_DATA } from "../config";
 
 
 export default function RoutinePageView({ routineName }) {
@@ -21,7 +22,7 @@ export default function RoutinePageView({ routineName }) {
 
   useEffect(() => {
     const socket = io();
-    fetch(`${SERVER_URL}/api/socketio`).then(() => {
+    fetch(`${SERVER_URL}/api/socketio`).then(async () => {
 
       socket.emit("join_room", `${routineName}`);
 
@@ -33,14 +34,32 @@ export default function RoutinePageView({ routineName }) {
         setOutput(output);
       });
 
+      try {
+        await fetch(`${PIPE_API}/routines/${routineName}/events/${LOG_DATA}/execute/`, {
+          method: "POST",
+          mode: "cors",
+        });
+      } catch (ex) {
+        console.log(ex);
+      }
+
       socket.on("extra_image", (extraImage) => {
         extraImages[extraImage["name"]] = extraImage["image_base64"];
         setExtraImages(extraImages);
       });
     });
     
-    return function cleanup() {
+    return async function cleanup() {
       socket.disconnect();
+
+      try {
+        await fetch(`${PIPE_API}/routines/${routineName}/events/${LOG_DATA}/execute/`, {
+          method: "POST",
+          mode: "cors",
+        });
+      } catch (ex) {
+        console.log(ex);
+      }
     };
   }, []);
 
