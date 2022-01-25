@@ -7,7 +7,7 @@ export default function RoutineExpandView() {
 
   return (
     <Grid container spacing={2}>
-      <Grid item xs={48 / 5 - 0.2} xl={48 / 5 - 0.2}>
+      <Grid item xs={9.8}>
         <RoutineLogsView logsPerPage={5} />
       </Grid>
       <Grid item xs={0.2} xl={0.2} paddingTop="5%" paddingBottom="2%">
@@ -16,7 +16,7 @@ export default function RoutineExpandView() {
           style={{ width: "100%" }}
           orientation="vertical"/>
       </Grid>
-      <Grid item xs={12 / 5}>
+      <Grid item xs={2}>
         <RoutineLogsSummaryView/>
       </Grid>
     </Grid>
