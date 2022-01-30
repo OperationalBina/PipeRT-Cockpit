@@ -6,8 +6,7 @@ import { selectedRoutineState } from "../utils/shared_atoms";
 import { useRecoilState } from "recoil";
 import { useEffect, useState } from "react";
 import io from "socket.io-client";
-import { SERVER_URL } from '../config';
-import { PIPE_API, LOG_DATA } from "../config";
+import { PIPE_API, LOG_DATA, SERVER_URL } from "../config/index";
 
 
 export default function RoutinePageView({ routineName }) {
