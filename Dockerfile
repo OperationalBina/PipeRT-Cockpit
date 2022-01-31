@@ -1,27 +1,3 @@
-# FROM node:lts as dependencies
-# WORKDIR /PIPERT-COCKPIT
-# COPY package.json ./
-# RUN npm install --frozen-lockfile
-
-# FROM node:lts as builder
-# WORKDIR /PIPERT-COCKPIT
-# COPY . .
-# COPY --from=dependencies /my-project/node_modules ./node_modules
-# RUN npm build
-
-# FROM node:lts as runner
-# WORKDIR /PIPERT-COCKPIT
-# ENV NODE_ENV production
-
-# # If you are using a custom next.config.js file, uncomment this line.
-# # COPY --from=builder /my-project/next.config.js ./
-# COPY --from=builder /PIPERT-COCKPIT/public ./public
-# COPY --from=builder /PIPERT-COCKPIT/.next ./.next
-# COPY --from=builder /PIPERT-COCKPIT/node_modules ./node_modules
-# COPY --from=builder /PIPERT-COCKPIT/package.json ./package.json
-
-# EXPOSE 3000
-# CMD ["npm", "start"]
 FROM node:alpine
 
 #Creates directories
