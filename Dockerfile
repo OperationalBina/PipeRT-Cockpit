@@ -14,16 +14,16 @@ COPY package.json /usr/src/app
 COPY package-lock.json /usr/src/app
 COPY next.config.js /usr/src/app
 
-#Execute commands in a new layer on top of the current image and commit the results
+#Install npm packages
 RUN npm install
 
 ##Copy new files or directories into the filesystem of the container
 COPY . /usr/src/app
 
-#Execute commands in a new layer on top of the current image and commit the results
+#Build application
 RUN npm run build
 
-#Informs container runtime that the container listens on the specified network ports at runtime
+#Informs container runtime that the container listens on the specified network port at runtime
 EXPOSE 3000
 
 #Allows you to configure a container that will run as an executable
