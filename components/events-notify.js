@@ -1,6 +1,6 @@
 import EventsNotifyView from "./events-notify-view";
 import { useEffect, useState } from "react";
-import { PIPE_API } from "../config";
+import { PIPE_API, SERVER_URL } from "../config/index";
 
 const PIPE_NAME = "Pipe"
 
@@ -60,22 +60,21 @@ export default function EventsNotify() {
   const [routines, setRoutines] = useState([]);
 
   useEffect(() => {
-    fetch(`/api/events/`)
+    fetch(`${SERVER_URL}/api/events/`)
       .then((res) => res.json())
       .then((data) => {
         let eventsTemp = data.map((event) => event["event_name"]);
         setEvents(eventsTemp);
       });
-  }, []);
 
-  useEffect(() => {
-    fetch(`/api/routines/`)
+      fetch(`${SERVER_URL}/api/routines/`)
       .then((res) => res.json())
       .then((data) => {
         // Add default option to select all routines.
         data.push({"routine_name": PIPE_NAME, "events": []})
         setRoutines(data);
       });
+
   }, []);
 
   return (

@@ -12,17 +12,24 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  let paths = await apiFetch('routines')
-  paths = paths.map(routine => ({ params: { routineName: `${routine.routine_name}` } }))
+  try {
+    let paths = await apiFetch('routines')
+    paths = paths.map(routine => ({ params: { routineName: `${routine.routine_name}` } }))
 
-  return {
-    paths,
-    fallback: false
+    return {
+      paths,
+      fallback: true
+    }
+  } catch {
+    return {
+      paths: [],
+      fallback: true
+    }
   }
 }
 
 
-export default function RoutineView( {routineName} ) {
+export default ( {routineName} ) => {
   return (
     <RecoilRoot><RoutinePageView routineName={routineName} /></RecoilRoot>
   )

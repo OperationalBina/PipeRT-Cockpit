@@ -8,20 +8,26 @@ import { apiFetch } from "../utils/http-calls"
 import { REFRESH_TIMES } from "../constants"
 import io from 'socket.io-client'
 import useSWR from 'swr'
+import { SERVER_URL } from '../config/index'
+import { RecoilRoot } from 'recoil';
+import { useEffect } from "react";
 
 export default function MainPageView() {
   const { data } = useSWR('routines', apiFetch, { refreshInterval: REFRESH_TIMES.ROUTINES })
   const routines = data ? data : []
-  fetch("/api/socketio").finally(() => {
+
+  useEffect(() => {
+  fetch(`${SERVER_URL}/api/socketio`).finally(() => {
     const socket = io();
 
     socket.on("connect", () => {
       console.log("connect");
       socket.emit("hello");
     });
-  });
+  })}, []);
 
   return (
+    <RecoilRoot>
     <Grid container spacing={2} direction="row">
       <Grid  item xs={1.8} xl={1.8}>
         <SidebarNavigationView></SidebarNavigationView>
@@ -57,5 +63,6 @@ export default function MainPageView() {
         </Grid>
       </Grid>
     </Grid>
+    </RecoilRoot>
   );
 }
