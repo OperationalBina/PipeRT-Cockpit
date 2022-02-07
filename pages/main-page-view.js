@@ -8,7 +8,7 @@ import { apiFetch } from "../utils/http-calls"
 import { REFRESH_TIMES } from "../constants"
 import io from 'socket.io-client'
 import useSWR from 'swr'
-import {SERVER_URL} from '../config/index'
+import { SERVER_URL } from '../config/index'
 import { RecoilRoot } from 'recoil';
 import { useEffect } from "react";
 
