@@ -1,7 +1,8 @@
 import { Server } from "socket.io";
+import { PIPE_API } from "../../config";
 import { connectToDatabase, insert, find } from "../../utils/nedb";
 
-const ioHandler = (req, res) => {
+const ioHandler = async (req, res) => {
   if (!res.socket.server.io) {
     const { db } = connectToDatabase();
 
@@ -32,7 +33,6 @@ const ioHandler = (req, res) => {
         ) {
           insert(db[msg["level"].toLowerCase() + "s"], msg);
         } else {
-          let emitName = msg["source"] + "_" + logType;
           let socketMessage = null;
 
           if (logType == "extra_image") {
@@ -47,40 +47,21 @@ const ioHandler = (req, res) => {
 
       socket.on("pipe_creation", async (msg) => {
         msg = JSON.parse(JSON.parse(msg)["message"].replaceAll("'", '"'));
-
-        let routines = msg["Routines"];
-        let events = msg["Events"];
-
-        for (let event of events) {
-          let eventsFound = await find(db.events, {
-            event_name: event,
-          });
-
-          if (eventsFound !== null && eventsFound.length === 0) {
-            insert(db.events, { event_name: event });
-          }
-        }
-
-        for(const routine of routines) {
-          let flow_name = routine["flow_name"];
-          let routine_name = routine["routine_name"];
-
-          let existingRoutines = await find(db.routines, {
-            routine_name: `${routine_name}`,
-          });
-
-          if (existingRoutines.length === 0) {
-            insert(db.routines, {
-              error_level: 0,
-              routine_name: `${routine_name}`,
-              flow_name: `${flow_name}`,
-              name: `${flow_name}-${routine_name}`,
-              events: routine["events"]
-            });
-          }        
-        }
+        msg = await handlePipeStructureMessage(msg, db);
       });
     });
+
+    // In case that the pipe is up already and the socket was not listening.
+    try {
+      const pipeStructureResponse = await fetch(`${PIPE_API}/pipe/structure`)
+      
+      if (pipeStructureResponse.ok) {
+        const pipeStructure = await pipeStructureResponse.json()
+        handlePipeStructureMessage(pipeStructure, db)
+      }
+    } catch {
+      console.log("Failed fetching pipe structure")
+    }
 
     res.socket.server.io = io;
   }
@@ -95,6 +76,41 @@ export const config = {
 };
 
 export default ioHandler;
+
+async function handlePipeStructureMessage(msg, db) {
+  let routines = msg["Routines"];
+  let events = msg["Events"];
+
+  for (let event of events) {
+    let eventsFound = await find(db.events, {
+      event_name: event,
+    });
+
+    if (eventsFound !== null && eventsFound.length === 0) {
+      insert(db.events, { event_name: event });
+    }
+  }
+
+  for (const routine of routines) {
+    let flow_name = routine["flow_name"];
+    let routine_name = routine["routine_name"];
+
+    let existingRoutines = await find(db.routines, {
+      routine_name: `${routine_name}`,
+    });
+
+    if (existingRoutines.length === 0) {
+      insert(db.routines, {
+        error_level: 0,
+        routine_name: `${routine_name}`,
+        flow_name: `${flow_name}`,
+        name: `${flow_name}-${routine_name}`,
+        events: routine["events"]
+      });
+    }
+  }
+  return msg;
+}
 
 function extractImageFromInputOutputMessage(msg) {
   let additionalData = msg["message"].split("'data':")[1];
