@@ -12,8 +12,8 @@ export default function RoutinesView({ routines }) {
     <Grid container>
       {routines.map(function (routine, index) {
         return (
-          <Grid item xs={2} key={index} style={{background: selectedRoutine == routine.name? '#a8e6ff': null}} 
-          onClick={() => setSelectedRoutine(routine.name)} onDoubleClick= {() => router.push(`/routines/${routine.routine_name}`)}>
+          <Grid item xs={2} key={index} style={{background: selectedRoutine == routine.routine_name? '#a8e6ff': null}} 
+          onClick={() => setSelectedRoutine(routine.routine_name)} onDoubleClick= {() => router.push(`/routines/${routine.routine_name}`)}>
             <RoutineView routine={routine} />
           </Grid>
         );
