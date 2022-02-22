@@ -13,8 +13,11 @@ import { RecoilRoot } from 'recoil';
 import { useEffect } from "react";
 
 export default function MainPageView() {
-  const { data } = useSWR('routines', apiFetch, { refreshInterval: REFRESH_TIMES.ROUTINES })
-  const routines = data ? data : []
+  const routinesSWR = useSWR('routines', apiFetch, { refreshInterval: REFRESH_TIMES.ROUTINES })
+  const routines = routinesSWR['data'] ? routinesSWR['data'] : []
+
+  const eventsSWR = useSWR('events', apiFetch, { refreshInterval: REFRESH_TIMES.ROUTINES })
+  const events = eventsSWR['data'] ? eventsSWR['data'] : []
 
   useEffect(() => {
   fetch(`${SERVER_URL}/api/socketio`).finally(() => {
@@ -30,7 +33,7 @@ export default function MainPageView() {
     <RecoilRoot>
     <Grid container spacing={2} direction="row">
       <Grid  item xs={1.8} xl={1.8}>
-        <SidebarNavigationView></SidebarNavigationView>
+        <SidebarNavigationView routines={routines} events={events}></SidebarNavigationView>
       </Grid>
       <Grid item xs={0.2} xl={0.2}>
             <Divider

@@ -55,32 +55,15 @@ async function notifyEvent(routine, event, args) {
   }
 }
 
-export default function EventsNotify() {
-  const [events, setEvents] = useState([]);
-  const [routines, setRoutines] = useState([]);
+export default function EventsNotify({routines, events}) {
 
-  useEffect(() => {
-    fetch(`${SERVER_URL}/api/events/`)
-      .then((res) => res.json())
-      .then((data) => {
-        let eventsTemp = data.map((event) => event["event_name"]);
-        setEvents(eventsTemp);
-      });
-
-      fetch(`${SERVER_URL}/api/routines/`)
-      .then((res) => res.json())
-      .then((data) => {
-        // Add default option to select all routines.
-        data.push({"routine_name": PIPE_NAME, "events": []})
-        setRoutines(data);
-      });
-
-  }, []);
+  const eventNames = events.map((event) => event["event_name"]);
+  const routinesWithDefaultPipe = routines.concat([{"routine_name": PIPE_NAME, "events": []}])
 
   return (
     <EventsNotifyView
-      events={events}
-      routines={routines}
+      events={eventNames}
+      routines={routinesWithDefaultPipe}
       notifyEvent={notifyEvent}
     />
   );

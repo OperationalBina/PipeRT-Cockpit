@@ -14,7 +14,7 @@ import Grid from "@mui/material/Grid";
 import EventsNotify from "./events-notify";
 import styles from "../styles/utils.module.css";
 
-export default function SidebarNavigationView() {
+export default function SidebarNavigationView({routines, events}) {
   return (
     <Box sx={{ display: 'flex' }}>
       <Grid container
@@ -50,7 +50,7 @@ export default function SidebarNavigationView() {
         <Divider />
         </Grid>
         <Grid item xs={12}>
-        <EventsNotify className={styles.centered}/>
+        <EventsNotify className={styles.centered} routines={routines} events={events}/>
         </Grid>
       </Grid>
     </Box>
