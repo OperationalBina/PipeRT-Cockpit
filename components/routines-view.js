@@ -9,7 +9,7 @@ export default function RoutinesView({ routines }) {
   const router = useRouter();
 
   return (
-    <Grid container>
+    <Grid container spacing={2}>
       {routines.map(function (routine, index) {
         return (
           <Grid item xs={2} key={index} style={{background: selectedRoutine == routine.routine_name? '#a8e6ff': null}} 
