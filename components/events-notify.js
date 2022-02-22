@@ -33,9 +33,10 @@ async function notifyEvent(routine, event, args) {
   };
 
   let request = ""
+  const routine_name = routine['routine_name']
 
-  if (routine !== undefined && routine !== "" && routine !== PIPE_NAME) {
-    request = `${PIPE_API}/routines/${routine['routine_name']}/events/${event}/execute/`;
+  if (routine !== undefined && routine !== "" && routine_name !== PIPE_NAME) {
+    request = `${PIPE_API}/routines/${routine_name}/events/${event}/execute/`;
   } else {
     request = `${PIPE_API}/routines/events/${event}/execute/`;
   }
