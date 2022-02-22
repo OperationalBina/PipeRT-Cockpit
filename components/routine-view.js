@@ -2,6 +2,7 @@ import styles from "../styles/utils.module.css";
 import Circle from "@mui/icons-material/Circle";
 import Grid from "@mui/material/Grid";
 import { ROUTINE_LEVELS_ENUM } from "../constants";
+import Typography from '@mui/material/Typography';
 
 const colorByErrorLevel = {
   [ROUTINE_LEVELS_ENUM.STABLE]: "green",
@@ -25,9 +26,11 @@ export default function RoutineView({ routine }) {
           style={circleStlye}
         />
       </Grid>
-      <Grid item xs={12}>
-        <p className={styles.centered}>{routine.name}</p>
+      <Grid item xs={12} wrap="nowrap">
+        <Typography className={styles.centered} style={{
+          fontSize: "80%"
+        }}>{routine.routine_name}</Typography>
       </Grid>
     </Grid>
-  );
+        );
 }
