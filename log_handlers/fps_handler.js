@@ -1,6 +1,6 @@
-import { connectToDatabase, insert, find } from "../utils/nedb";
+import { connectToDatabase, insert, find, update } from "../utils/nedb";
 
-export default function handle_fps({msg}) {
+export default function handle_fps({ msg }) {
   const { db } = connectToDatabase();
 
   const message = msg["message"];
@@ -15,6 +15,8 @@ export default function handle_fps({msg}) {
         source: msg["source"],
         fps: fps,
       });
+    } else {
+      update(db.fps, { source: msg["source"] }, { $set: { fps: fps } })
     }
   });
 }

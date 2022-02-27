@@ -1,6 +1,6 @@
 import { Server } from "socket.io";
 import { PIPE_API } from "../../config";
-import getHandle from "../../log_handler_getter";
+import getHandle from "../../log_handle_mapping";
 import handlePipeStructureMessage from "../../log_handlers/pipe_creation_handler"
 
 

@@ -18,7 +18,7 @@ function connectToDatabase() {
   db.errors = new Datastore({ filename: 'errors.db', autoload: true});
   db.events = new Datastore({filename: 'events.db', autoload: true})
   db.fps = new Datastore({filename: 'fps.db', autoload: true})
-  
+
   cachedDb = db
 
   return { db }
@@ -35,6 +35,19 @@ function insert(db, ...opt) {
     })
   })
 }
+
+function update(db, query, updateQuery) {
+  return new Promise(function (resolve, reject) {
+    db.update(query, updateQuery, {}, function (err, doc) {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(doc)
+      }
+    })
+  })
+}
+
 
 function find(db, ...opt) {
   return new Promise(function (resolve, reject) {
@@ -60,4 +73,4 @@ function count(db, ...opt) {
   })
 }
 
-export { connectToDatabase, insert, find, count }
+export { connectToDatabase, insert, find, count, update }
