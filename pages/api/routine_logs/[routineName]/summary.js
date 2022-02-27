@@ -9,8 +9,8 @@ export default async function handler(req, res) {
     let infos = await count(db.infos, { source: routineName })
     let fpsList = await find(db.fps, { source: routineName })
 
-    let logs = await Promise.all([exceptions, warnings, infos]);
-    [exceptions, warnings, infos] = logs
+    let logs = await Promise.all([exceptions, warnings, infos, fpsList]);
+    [exceptions, warnings, infos, fpsList] = logs
 
     let result = {
         exceptions: exceptions,
