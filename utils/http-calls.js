@@ -9,3 +9,18 @@ export async function apiFetch(endpoint) {
     } else 
         throw `An error when fetching from /api/${endpoint} - ${response.text}`
 }
+
+export async function apiPost(endpoint, params) {
+    let response = await fetch(`${SERVER_URL}/api/${endpoint}`, {
+        method: 'POST',
+        body: JSON.stringify({
+            ...params})
+    });
+
+    console.log(response)
+
+    if (response.ok) 
+        return response.json()
+    else 
+        throw `An error when fetching from /api/${endpoint} - ${response.text}`
+}
