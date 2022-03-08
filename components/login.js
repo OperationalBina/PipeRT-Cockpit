@@ -2,7 +2,6 @@ import { useState } from "react";
 import LoginView from "./login-view";
 import { apiPost } from "../utils/http-calls";
 import { useRouter } from "next/router";
-import * as CryptoJS from "crypto-js";
 import { HOME_ROUTE } from "../config";
 
 export default function Login() {
@@ -15,7 +14,7 @@ export default function Login() {
     try {
       await apiPost("login", {
         username: username,
-        password: CryptoJS.SHA256(password).toString(),
+        password: password,
       });
       router.push(HOME_ROUTE);
     } catch (error) {
