@@ -5,5 +5,5 @@ import RoutinePageView from "../components/routine-page-view";
 
 export default function Home() {
     return (
-      <RecoilRoot><MainPageView /></RecoilRoot>)
+       <RecoilRoot><MainPageView /></RecoilRoot>)
 }
