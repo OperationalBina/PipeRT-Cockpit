@@ -7,20 +7,16 @@ import { HOME_ROUTE } from "../config";
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [failed, setFailed] = useState(true);
+  const [isValid, setIsValid] = useState(true);
   const router = useRouter();
 
-  const submitLogin = async () => {
-    try {
-      await apiPost("login", {
-        username: username,
-        password: password,
-      });
-      router.push(HOME_ROUTE);
-    } catch (error) {
-        setFailed(false)
-        console.log(error);
-    }
+  const submitLogin = () => {
+    apiPost("login", {
+      username: username,
+      password: password,
+    })
+      .then(() => router.push(HOME_ROUTE))
+      .catch(() => setIsValid(false));
   };
 
   return (
@@ -28,7 +24,7 @@ export default function Login() {
       handleSubmit={submitLogin}
       changePassword={setPassword}
       changeUsername={setUsername}
-      failed={failed}
+      isValid={isValid}
     ></LoginView>
   );
 }

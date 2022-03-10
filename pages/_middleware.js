@@ -1,10 +1,14 @@
 import { NextResponse, NextRequest } from "next/server";
-import * as jwt from "jsonwebtoken"
-import { JWT_EXPIRATION, JWT_KEY, PUBLIC_ROUTES, LOGIN_ROUTE, HOME_ROUTE } from "../config";
-
+import * as jwt from "jsonwebtoken";
+import {
+  JWT_EXPIRATION,
+  JWT_KEY,
+  PUBLIC_ROUTES,
+  LOGIN_ROUTE,
+  HOME_ROUTE,
+} from "../config";
 
 export default function middleware(req) {
-
   const token = req.cookies.token;
 
   if (!token) {
@@ -27,13 +31,5 @@ export default function middleware(req) {
     return NextResponse.redirect(HOME_ROUTE);
   }
 
-  const newToken = jwt.sign({ username: payload.username }, JWT_KEY, {
-    algorithm: "HS256",
-    expiresIn: JWT_EXPIRATION,
-  });
-
-  let res = NextResponse.next()
-  res.cookie("token", newToken, { maxAge: JWT_EXPIRATION * 1000 });
-
-  return res;
+  return NextResponse.next();
 }
